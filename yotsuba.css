@@ -2,7 +2,8 @@ body{
 	font-family:arial,
 	helvetica,sans-serif;
 	font-size:10pt;
-	background:#FFE url(/image/fade.png) top center repeat-x;
+	background:#FFE url(./image/fade.png) top center repeat-x;
+	background:#FFE url(../image/fade.png) top center repeat-x;
 	color:#800000;
 	padding-left:5px;
 	padding-right:5px;
