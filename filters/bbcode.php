@@ -1,4 +1,10 @@
-<?
+<?php
+    $com = preg_replace("/\*(.*)\*/Usi", "<b>\\1</b>", $com);
+    $com = preg_replace("/\_\_(.*)\_\_/Usi", "<u>\\1</u>", $com);
+    $com = preg_replace("/\*\*(.*)\*\*]/Usi", "<i>\\1</i>", $com);
+    $com = preg_replace("/\%\%(.*)\%\%/Usi", "<span title=\"spoiler\" style=\"color: #000000; background-color: #000000;\" class=\"spoiler\" onmouseover=\"this.style.color='#FFFFFF';\" onmouseout=\"this.style.color=this.style.backgroundColor='#000000'\">\\1</span>", $com); 
+
+    // BBcode
     $com = preg_replace("/\[b\](.*)\[\/b\]/Usi", "<b>\\1</b>", $com);
     $com = preg_replace("/\[u\](.*)\[\/u\]/Usi", "<u>\\1</u>", $com);
     $com = preg_replace("/\[i\](.*)\[\/i\]/Usi", "<i>\\1</i>", $com);
