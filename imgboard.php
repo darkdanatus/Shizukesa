@@ -1,4 +1,5 @@
-<?
+<?php 
+//<? // Лол
 session_start();
 /*
 Based on STIBS
