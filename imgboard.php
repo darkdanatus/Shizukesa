@@ -1,21 +1,8 @@
 <?
 session_start();
 /*
-=================================
-============STIBS================
-=================================
-STIBS was based on the Saguaro project, and has been edited to have some features of yotsuba, which has not been added due to the code complications... come back later for that.
-
-=================================
-==========Special Thanks=========
-=================================
-I'd like to thank the following people
-
-~ Spoot - For a good starting place, the modifications you made are very cool.
-
-~ Team4chan - for accidentally releasing the source code for yotsuba.
-=================================
-this one is for you, Rebecca.
+Based on STIBS
+Shizukesa
 */
 include "config.php";
 include "strings_e.php";		//String resource file
@@ -135,7 +122,7 @@ $lskd_fix_loop=0;
 	// blah	
     if($email) $name = "<a href=\"mailto:$email\">$name</a>";
 
-	$com = preg_replace("/(^|>)(&gt;[^<]*|ÅÑ[^<]*)/",
+	$com = preg_replace("/(^|>)(&gt;[^<]*|¬Å‚Äû[^<]*)/",
      "$1<span class=\"unkfunc\">$2</span>", $com);
     $com = preg_replace("/(^|>)(&gt;&gt;[^0-9])/",
      "$1 $2", $com);
@@ -234,7 +221,7 @@ $lskd_fix_loop=0;
       // URL and e-mail
       if($email) $name = "<a href=\"mailto:$email\">$name</a>";
       
-	  $com = preg_replace("/(^|>)(&gt;[^<]*|ÅÑ[^<]*)/",
+	  $com = preg_replace("/(^|>)(&gt;[^<]*|¬Å‚Äû[^<]*)/",
      "$1<span class=\"unkfunc\">$2</span>", $com);
     $com = preg_replace("/(^|>)(&gt;&gt;[^0-9])/",
      "$1 $2", $com);
@@ -706,9 +693,9 @@ function regist($name,$email,$sub,$com,$url,$pwd,$upfile,$upfile_name,$resto,$nu
   error(S_STRREF,$dest);};}
   if($_SERVER["REQUEST_METHOD"] != "POST") error(S_UNJUST,$dest);
   // Form content check
-  if(!$name||ereg("^[ |Å@|]*$",$name)) $name="";
-  if(!$com||ereg("^[ |Å@|\t]*$",$com)) $com="";
-  if(!$sub||ereg("^[ |Å@|]*$",$sub))   $sub=""; 
+  if(!$name||ereg("^[ |¬Å@|]*$",$name)) $name="";
+  if(!$com||ereg("^[ |¬Å@|\t]*$",$com)) $com="";
+  if(!$sub||ereg("^[ |¬Å@|]*$",$sub))   $sub=""; 
 
   if(!$resto&&!$textonly&&!is_file($dest)) error(S_NOPIC,$dest);
   if(!$com&&!is_file($dest)) error(S_NOTEXT,$dest);
@@ -812,7 +799,7 @@ if(strlen($url) > 10) error(S_UNUSUAL,$dest);
   $name = CleanStr($name);
  
 
- if(ereg("(#|#î)(.*)",$names,$regs)){
+ if(ereg("(#|#‚Äù)(.*)",$names,$regs)){
   $name = str_replace("&#","&%%%%%%",$name); # otherwise HTML numeric entities screw up explode()!
   list ($name,$regtrip,$sectrip) = str_replace("&%%%%%%", "&#", explode("#",$name));
   $name = $name;
@@ -820,7 +807,7 @@ if(strlen($url) > 10) error(S_UNUSUAL,$dest);
     $cap = $regs[2];
     $cap=strtr($cap,"&amp;", "&");
     $cap=strtr($cap,"&#44;", ",");
-    $name=ereg_replace("(#|#î)(.*)","",$name);
+    $name=ereg_replace("(#|#‚Äù)(.*)","",$name);
     $salt=substr($cap."H.",1,2);
     $salt=ereg_replace("[^\.-z]",".",$salt);
     $salt=strtr($salt,":;<=>?@[\\]^_`","ABCDEFGabcdef"); 
