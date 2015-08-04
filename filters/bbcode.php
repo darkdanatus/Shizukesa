@@ -1,4 +1,5 @@
 <?php
+    // WakabaMark
     $com = preg_replace("/\_\_(.*)\_\_/Usi", "<u>\\1</u>", $com);
     $com = preg_replace("/\*\*(.*)\*\*/Usi", "<b>\\1</b>", $com);
     $com = preg_replace("/\*(.*)\*/Usi", "<i>\\1</i>", $com);
