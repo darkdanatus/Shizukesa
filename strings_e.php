@@ -103,5 +103,4 @@ define(S_BANS_EXTRA, '');
 define(S_CAPFAIL, 'You seem to have mistyped the verification.');
 define(STIBS_VERSION, 'v0.01alpha');
 ?>
-;
-?>
+
