@@ -1,4 +1,4 @@
-<?
+<?php
 define(S_DELETE, 'Delete');
 define(S_HOME, 'Home');											//Forwards to home page
 define(S_ADMIN, 'Manage');										//Forwards to Management Panel
@@ -21,7 +21,7 @@ define(S_RULES, '<ul><li>Supported file types are: GIF, JPG, PNG</li>
 </ul>');				//Prints rules under posting section
 define(S_REPORTERR, 'Error: Cannot find reply.');							//Returns error when a reply (res) cannot be found
 define(S_THUMB, 'Thumbnail displayed, click image for full size.');					//Prints instructions for viewing real source
-define(S_PICNAME, 'File : ');										//Prints text before upload name/link
+define(S_PICNAME, 'File: ');										//Prints text before upload name/link
 define(S_REPLY, 'Reply');										//Prints text for reply link
 define(S_OLD, 'Marked for deletion (old).');								//Prints text to be displayed before post is marked for deletion, see: retention
 define(S_RESU, '');											//Prints post?
