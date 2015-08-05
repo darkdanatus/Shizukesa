@@ -1,4 +1,4 @@
-<?
+<?php
 define(S_HOME, 'Inicio');											//Forwards to home page
 define(S_ADMIN, 'Administracion');										//Forwards to Management Panel
 define(S_RETURN, 'Regresar');										//Returns to image board
@@ -22,7 +22,7 @@ define(S_REPORTERR, 'Error: no Puede encontrar la respuesta.');							//Returns 
 define(S_THUMB, 'Una del pulgar mostrada, imagen de chasquido para tamano natural.');					//Prints instructions for viewing real source
 define(S_PICNAME, 'Archivo : ');										//Prints text before upload name/link
 define(S_REPLY, 'Responder');										//Prints text for reply link
-define(S_OLD, 'Marcado para eliminación (vieja).');								//Prints text to be displayed before post is marked for deletion, see: retention
+define(S_OLD, 'Marcado para eliminaciÃ³n (vieja).');								//Prints text to be displayed before post is marked for deletion, see: retention
 define(S_RESU, '');											//Prints post?
 define(S_ABBR, ' postes omitidos. Respuesta de Chasquido para ver.');						//Prints text to be shown when replies are hidden
 define(S_REPDEL, 'Suprima Poste ');									//Prints text next to S_DELPICONLY (left)
@@ -38,18 +38,18 @@ define(S_RELOAD, 'Regresar');										//Reloads the image board (refresh)
 define(S_UPFAIL, 'Error: Cargue fallado.');								//Returns error for failed upload (reason: unknown?)
 define(S_NOREC, 'Error: no Puede encontrar el registro.');								//Returns error when record cannot be found
 define(S_SAMEPIC, 'Error: Duplique la suma de control md5 descubierta.');						//Returns error when a md5 checksum dupe is detected
-define(S_TOOBIG, '¡Esta imagen es demasiado grande! ¡Cargue algo mas pequeno!');
+define(S_TOOBIG, 'Â¡Esta imagen es demasiado grande! Â¡Cargue algo mas pequeno!');
 define(S_TOOBIGORNONE, 'Esta imagen es demasiado grande o no hay ninguna imagen en absoluto.');
-define(S_UPGOOD, ' ¡'.$upfile_name.' cargado!<br><br>');					//Defines message to be displayed when file is successfully uploaded
+define(S_UPGOOD, ' Â¡'.$upfile_name.' cargado!<br><br>');					//Defines message to be displayed when file is successfully uploaded
 define(S_STRREF, 'Error: la Cuerda se nego.');								//Returns error when a string is refused
 define(S_UNJUST, 'Error: POSTE injusto.');								//Returns error on an unjust POST - prevents floodbots or ways not using POST method?
 define(S_NOPIC, 'Error: Ningun archivo seleccionado.');								//Returns error for no file selected and override unchecked
 define(S_NOTEXT, 'Error: Ningun texto entro.');								//Returns error for no text entered in to subject/comment
 define(S_MANAGEMENT, 'Gerente : ');									//Defines prefix for Manager Post name
-define(S_DELETION, 'Eliminación');										//Prints deletion message with quotes?
+define(S_DELETION, 'EliminaciÃ³n');										//Prints deletion message with quotes?
 define(S_TOOLONG, 'Error: Campo demasiado mucho tiempo.');								//Returns error for too many characters in a given field
 define(S_UNUSUAL, 'Error: respuesta anormal.');								//Returns error for abnormal reply? (this is a mystery!)
-define(S_BADHOST, 'Error: el Anfitrión es prohibido.');								//Returns error for banned host ($badip string)
+define(S_BADHOST, 'Error: el AnfitriÃ³n es prohibido.');								//Returns error for banned host ($badip string)
 define(S_PROXY80, 'Error: Poder descubierto en:80.');							//Returns error for proxy detection on port 80
 define(S_PROXY8080, 'Error: Poder descubierto en:8080.');							//Returns error for proxy detection on port 8080
 define(S_SUN, 'Dom');											//Defines abbreviation used for "Sunday"
@@ -69,8 +69,8 @@ define(S_DUPE, 'Error: entrada de archivo duplicada descubierta.');						//Retur
 define(S_NOTHREADERR, 'Error: el Hilo especificado no existe.');					//Returns error when a non-existant thread is accessed
 define(S_SCRCHANGE, 'Actualizacion de pagina.');									//Defines message to be displayed when post is successful	
 define(S_TOODAMNSMALL, 'Error: Imagen demasiado pequena.');                //Error for small images									//
-define(S_BADDELPASS, 'Error: Contraseña incorrecta.');							//Returns error for wrong password (when user tries to delete file)
-define(S_WRONGPASS, 'Error: contraseña de dirección incorrecta.');						//Returns error for wrong password (when trying to access Manager modes)
+define(S_BADDELPASS, 'Error: ContraseÃ±a incorrecta.');							//Returns error for wrong password (when user tries to delete file)
+define(S_WRONGPASS, 'Error: contraseÃ±a de direcciÃ³n incorrecta.');						//Returns error for wrong password (when trying to access Manager modes)
 define(S_RETURNS, 'Regresar');										//Returns to HTML file instead of PHP--thus no log/SQLDB update occurs
 define(S_LOGUPD, 'Actualizacion');										//Updates the log/SQLDB by accessing the PHP file
 define(S_MANAMODE, 'Modo de Gerente');									//Prints heading on top of Manager page
@@ -80,7 +80,7 @@ define(S_MANASUB, 'Enviar');										//Defines name for submit button in Manage
 define(S_DELLIST, 'Panel de administracion');									//Prints sub-heading of Management Panel
 define(S_ITDELETES, 'Suprimir');										//Defines for deletion button in Management Panel
 define(S_MDRESET, 'Reinicializado');										//Defines name for field reset button in Management Panel
-define(S_MDONLYPIC, 'Archivo Sólo');									//Sets whether or not to delete only file, or entire post/thread
+define(S_MDONLYPIC, 'Archivo SÃ³lo');									//Sets whether or not to delete only file, or entire post/thread
 define(S_MDTABLE1, '<th>Suprimir?</th><th>Poste No.</th><th>Tiempo</th><th>Sujeto</th>');			//Explains field names for Management Panel (Delete?->Subject)
 define(S_MDTABLE2, '<th>Nombre</th><th>Comentario</th><th>Anfitrion</th><th>Tamano<br>(Bytes)</th><th>md5</th><th>Respuesta #</th><th>Nombre del archivo Local</th><th>Edad</th>');	//Explains names for Management Panel (Name->md5)
 define(S_RESET, 'Reinicializado');										//Sets name for field reset button (global)
@@ -89,15 +89,15 @@ define(S_CANNOTWRITE, 'Error: no Puede escribir al directorio.<br>');						//Ret
 define(S_NOTWRITE, 'Error: no Puede escribir al directorio.<br>');						//Returns error when the script cannot write to the directory, the chmod (777) is wrong
 define(S_NOTREAD, 'Error: no Puede leer del directorio.<br>');						//Returns error when the script cannot read from the directory, the chmod (777) is wrong
 define(S_NOTDIR, 'Error: el Directorio no existe.<br>');						//Returns error when the script cannot find/read from the directory (does not exist/isn't directory), the chmod (777) is wrong
-define(S_SQLCONF, 'Fracaso de unión de MySQL');		//MySQL connection failure
+define(S_SQLCONF, 'Fracaso de uniÃ³n de MySQL');		//MySQL connection failure
 define(S_SQLDBSF, 'Error de base de datos, compruebe ajustes SQL<br>');	//database select failure
-define(S_TCREATE, '¡Creacion de mesa!<br>\n');	//creating table
-define(S_TCREATEF, '¡Incapaz de crear mesa!<br>');		//table creation failed
-define(S_SQLFAIL, '¡Problema SQL crítico!<br>');		//SQL Failure
+define(S_TCREATE, 'Â¡Creacion de mesa!<br>\n');	//creating table
+define(S_TCREATEF, 'Â¡Incapaz de crear mesa!<br>');		//table creation failed
+define(S_SQLFAIL, 'Â¡Problema SQL crÃ­tico!<br>');		//SQL Failure
 define(S_QUOTE, 'Cita');
 define(S_PERMALINK, 'Permalink hilo');
 define(S_RESNUM, 'Respuesta para enhebrar:');
 define(S_BANS, 'Prohibicion');
 define(S_BANS_EXTRA, '');
-define(S_CAPFAIL, 'Usted parece tener mistyped la verificación.');
+define(S_CAPFAIL, 'Usted parece tener mistyped la verificaciÃ³n.');
 ?>
