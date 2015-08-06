@@ -1,12 +1,11 @@
 <?php 
-//<? // Лол
 session_start();
 /*
 Based on STIBS
 Shizukesa
 */
 include "config.php";
-include "strings_e.php";		//String resource file
+include "strings_e.php";		// Язык
 
 $num = $_REQUEST['num'];
 $capkeyx = substr($_SESSION['capkey'],0,5);
