@@ -72,7 +72,7 @@ define(S_OMITT_NUM, '5');								//number of posts to display in each thread on 
 define(NOPICBOX, '0');									//whether or not to have the [No Picture] checkbox (1: yes  0: no)
 define(DUPE_CHECK, '1');								//whether or not to check for duplicate images
 define(S_BOARDLIST, '[a / b / c] [d / e / f] [g / h / i] [j / k / l]');    //meta description for this board (LOOK AT THE README)
-define(S_DESCR, 'An imageboard powered by STIBS');    //meta description for this board
+define(S_DESCR, 'An imageboard powered by Shizukesa');    //meta description for this board
 define(EXTRA_SHIT, '');         //Any extra javascripts you want to include inside the <head>
 
 //Advertisements

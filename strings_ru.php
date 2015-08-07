@@ -34,7 +34,7 @@ define(S_PREV, 'Назад');										//Defines previous button
 define(S_FIRSTPG, 'Назад');										//Defines previous button
 define(S_NEXT, 'Вперед');											//Defines next button
 define(S_LASTPG, 'Вперед');										//Defines next button
-define(S_FOOT, '- <a href="http://www.2chan.net/" target="_blank">futaba</a> + <a href="http://1chan.net/futallaby/" target="_blank">futallaby</a> + <a href="http://github.com/malamut2014/Shizukesa" title="Based on STIBS r2">Shizukesa</a>-'); //Prints footer (leave these credits)
+define(S_FOOT, '- <a href="http://www.2chan.net/" target="_blank">futaba</a> + <a href="http://1chan.net/futallaby/" target="_blank">futallaby</a> + <a href="http://github.com/malamut2014/Shizukesa" title="Based on STIBS r2">Shizukesa</a> -'); //Prints footer (leave these credits)
 define(S_RELOAD, 'Назад');										//Reloads the image board (refresh)
 define(S_UPFAIL, 'Ошибка: Upload failed.');								//Returns Ошибка for failed upload (reason: unknown?)
 define(S_NOREC, 'Ошибка: Cannot find record.');								//Returns Ошибка when record cannot be found

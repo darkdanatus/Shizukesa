@@ -5,7 +5,7 @@ Based on STIBS
 Shizukesa
 */
 include "config.php";
-include "strings_e.php";		// Язык
+include "strings_ru.php";		// Язык
 
 $num = $_REQUEST['num'];
 $capkeyx = substr($_SESSION['capkey'],0,5);
