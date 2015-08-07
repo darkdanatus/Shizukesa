@@ -819,6 +819,7 @@ if(strlen($url) > 10) error(S_UNUSUAL,$dest);
       $shi1 = str_replace("x", "24", $shi1);
       $shi1 = str_replace("y", "25", $shi1);
       $shi1 = str_replace("z", "26", $shi1);
+	  $shi1 = preg_replace("/[^0-9,.]/", "", $shi1);
 	function shrink_id($string){
 	     $string = substr($string,0,6);
 	     return $string;
