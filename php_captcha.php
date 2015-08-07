@@ -3,9 +3,9 @@ session_start();
 
 $RandomStr = md5(microtime()); // md5 to generate the random string
 
-$ResultStr = substr($RandomStr,0,5); //trim 5 digit 
+$ResultStr = substr($RandomStr,0,2); //trim 2 digit 
 
-$NewImage =imagecreatefromjpeg("img.jpg"); //image create by existing image and as back ground 
+$NewImage =imagecreatefrompng("img.png"); //image create by existing image and as back ground 
 
 $LineColor = imagecolorallocate($NewImage,0,0,0); //line color 
 $TextColor = imagecolorallocate($NewImage,204,0,0); //text color-white
@@ -19,8 +19,8 @@ imagestring($NewImage, 5, 16, 4, $ResultStr, $TextColor);// Draw a random string
 
 $_SESSION['capkey'] = $ResultStr;// carry the data through session
 
-header("Content-type: image/jpeg");// out out the image 
+header("Content-type: image/png");// out out the image 
 
-imagejpeg($NewImage); //Output image to browser 
+imagepng($NewImage); //Output image to browser 
 
 ?>
