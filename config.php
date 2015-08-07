@@ -1,4 +1,4 @@
-<? 
+<?php
 //Essentials - You NEED to change these, or at least make sure they're good
 define(SQLLOG, 'CHANGEME');							//Table (NOT DATABASE) used by image board
 define(SQLHOST, 'CHANGEME');							//MySQL server address, usually localhost
@@ -40,15 +40,8 @@ define(GLOBAL_MSG, '<center><font color=red></font></center>');									//4ch li
 //CSS stuff.
 //These are required, but you can change them.
 define(CSSFILE, 'yotsuba.css');							//location of the css file, also the default
-//Not needed yet.
-/*define(STYLESHEET_1, 'Futaba');							//Name of the first stylesheet.
-define(CSSFILE2, '../css/burichan.css');						//location of the second stylesheet.
-define(STYLESHEET_2, 'Burichan');						//Name of the second stylesheet.
-define(CSSFILE3, '../css/kusaba.css');						//location of the second stylesheet.
-define(STYLESHEET_3, 'Kusaba');						//Name of the second stylesheet.
-define(CSSFILE4, '../css/monotone.css');						//location of the second stylesheet.
-define(STYLESHEET_4, 'Monotone');						//Name of the second stylesheet.
-*/
+define(CSS2FILE, 'futaba.css');							//Second one
+
 
 //Capcodes - show 'em who's boss (put it as your trip. IE: "name#CHANGEME" would result as "name## Admin ##!09EKYZv3TU")
 define("ADMIN_PASS", 'faggot');     	   						//admin pass
