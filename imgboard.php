@@ -761,12 +761,22 @@ if(strlen($url) > 10) error(S_UNUSUAL,$dest);
   $now = gmdate("y/m/d",$time+9*60*60)."(".(string)$yd.")".gmdate("H:i",$time+9*60*60);
   if(DISP_ID){
     if($email=="sage"&&DISP_ID==1){
-      $now .= " ID:Heaven";
+      $now .= " ID: <font style=\"background-color: #121212; color: white; border-radius: 6px;
+  padding: 0px 5px;\">SAGE</font>";
     }else{
-      $now.=" ID:".substr(crypt(md5($_SERVER["REMOTE_ADDR"].'id'.gmdate("Ymd", $time+9*60*60)),'id'),-8);
+      $shi = substr(crypt(md5($_SERVER["REMOTE_ADDR"].'id'.gmdate("Ymd", $time+9*60*60)),'id'),-8);
+      $shi1 = substr(crypt(md5($_SERVER["REMOTE_ADDR"].'id'.gmdate("Ymd", $time+9*60*60)),'id'),-8);
+      $shi1 = preg_replace("/[^0-9,.]/", "", $shi1);
+	function shrink_id($string){
+	     $string = substr($string,0,6);
+	     return $string;
+	}
+	$shi1 = shrink_id($shi1);
+      $now.=" ID: <font style=\"background-color: #".$shi1."; color: white; border-radius: 6px;
+  padding: 0px 5px;\">".$shi."</font>";
     }
   }
- 
+  
   //if(JANITOR_BOARD == 1) { // now that the cookie_name and _email are separated, we can modify the real ones
   	//$name = $_COOKIE['4chan_auser'];
   	//$email = '';
