@@ -1,3 +1,3 @@
 # Shizukesa
-Основанно на STIBS (Super Tiny Image Board Software)</ br>
+Основанно на STIBS (Super Tiny Image Board Software)/n
 Допиливание футалабби
