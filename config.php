@@ -8,8 +8,8 @@ define(SQLDB, 'CHANGEME');								//Database used by image board
 
 //Basic settings
 define(PANEL_PASS, 'CHANGEME');							//Janitor password  (CHANGE THIS YO)
-define(TITLE, 'Super Tiny Imageboard Software Powered Imageboard');				//Name of this image board
-define(S_HEADSUB, '<center><font size=1>cool!</font><center>');  			//subtitle underneath title
+define(TITLE, '/b/ - Random');				//Name of this image board
+define(S_HEADSUB, '<center><font size=1></font><center>');  			//subtitle underneath title
 define(SHOWTITLETXT, '1');								//Show TITLE at top (1: yes  0: no) [you shouldn't disable this btw]
 define(SHOWTITLEIMG, '0');								//Show image at top (0: no, 1: single, 2: rotating)
 define(TITLEIMG, '');									//Title image (point to php file if rotating)
@@ -35,7 +35,7 @@ define(MANTHUMBS, '1');									//Display thumbnails in manager panel
 define(BOTCHECK, '0');									//Use CAPTCHAs
 define(USE_BBCODE, '1');								//Use BBcode
 define(FORCED_ANON, '');									//Maximum upload size in KB
-define(GLOBAL_MSG, '<center><font color=red>hello, and welcome to STIBS</font></center>');									//4ch like global message..
+define(GLOBAL_MSG, '<center><font color=red></font></center>');									//4ch like global message..
 
 //CSS stuff.
 //These are required, but you can change them.
