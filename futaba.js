@@ -83,61 +83,75 @@ function highlight(post)
 	return true;
 }
 
-
-
-function set_stylesheet(styletitle,norefresh)
-{
-	set_cookie("wakabastyle",styletitle,365);
-
-	var links=document.getElementsByTagName("link");
-	var found=false;
-	for(var i=0;i<links.length;i++)
-	{
-		var rel=links[i].getAttribute("rel");
-		var title=links[i].getAttribute("title");
-		if(rel.indexOf("style")!=-1&&title)
-		{
-			links[i].disabled=true; // IE needs this to work. IE needs to die.
-			if(styletitle==title) { links[i].disabled=false; found=true; }
+function set_stylesheet(title) {
+	var i, a, main;
+	for(i=0; (a = document.getElementsByTagName("link")[i]); i++) {	
+	if(a.getAttribute("rel").indexOf("style") != -1 && a.getAttribute("title")) 
+		{	
+			a.disabled = true;	
+			if(a.getAttribute("title") == title) a.disabled = false;
 		}
 	}
-	if(!found) set_preferred_stylesheet();
 }
-
-function set_preferred_stylesheet()
-{
-	var links=document.getElementsByTagName("link");
-	for(var i=0;i<links.length;i++)
-	{
-		var rel=links[i].getAttribute("rel");
-		var title=links[i].getAttribute("title");
-		if(rel.indexOf("style")!=-1&&title) links[i].disabled=(rel.indexOf("alt")!=-1);
-	}
-}
-
-function get_active_stylesheet()
-{
-	var links=document.getElementsByTagName("link");
-	for(var i=0;i<links.length;i++)
-	{
-		var rel=links[i].getAttribute("rel");
-		var title=links[i].getAttribute("title");
-		if(rel.indexOf("style")!=-1&&title&&!links[i].disabled) return title;
-	}
+ 
+function get_active_stylesheet(){
+	var i, a;
+	for(i=0; (a = document.getElementsByTagName("link")[i]); i++) 
+	{	
+		if(a.getAttribute("rel").indexOf("style") != -1 && a.getAttribute("title") && !a.disabled) 
+		return a.getAttribute("title");
+	} 
 	return null;
 }
 
 function get_preferred_stylesheet()
 {
-	var links=document.getElementsByTagName("link");
-	for(var i=0;i<links.length;i++)
-	{
-		var rel=links[i].getAttribute("rel");
-		var title=links[i].getAttribute("title");
-		if(rel.indexOf("style")!=-1&&rel.indexOf("alt")==-1&&title) return title;
+	var i, a;
+	for(i=0; (a = document.getElementsByTagName("link")[i]); i++) 
+	{	
+		if(a.getAttribute("rel").indexOf("style") != -1 && a.getAttribute("rel").indexOf("alt") == -1 && a.getAttribute("title")) 
+		return a.getAttribute("title");
 	}
 	return null;
 }
+
+function createCookie(name,value,days) 
+{
+	if (days) 
+	{	
+	var date = new Date();	
+	date.setTime(date.getTime()+(days*24*60*60*1000));	
+	var expires = "; expires="+date.toGMTString();
+	}
+	else expires = "";
+	document.cookie = name+"="+value+expires+"; path=/";}
+
+function readCookie(name) 
+{
+	var nameEQ = name + "=";	
+	var ca = document.cookie.split(';');
+	for(var i=0;i < ca.length;i++) 
+	{	
+		var c = ca[i];	
+		while (c.charAt(0)==' ') c = c.substring(1,c.length);	
+		if (c.indexOf(nameEQ) == 0) 
+		return c.substring(nameEQ.length,c.length);
+	}
+	return null;
+}
+
+window.onload = function(e) {
+var cookie = readCookie("style");
+var title = cookie ? cookie : getPreferredStyleSheet();
+setActiveStyleSheet(title);
+}
+window.onunload = function(e) {
+var title = get_active_stylesheet();
+createCookie("style", title, 365);
+}
+var cookie = readCookie("style"); 
+var title = cookie ? cookie : getPreferredStyleSheet();
+setActiveStyleSheet(title);
 
 function set_inputs(id) { with(document.getElementById(id)) {if(!field1.value) field1.value=get_cookie("name"); if(!field2.value) field2.value=get_cookie("email"); if(!password.value) password.value=get_password("password"); } }
 function set_delpass(id) { with(document.getElementById(id)) password.value=get_cookie("password"); }
