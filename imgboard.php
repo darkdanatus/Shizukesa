@@ -451,7 +451,7 @@ function insert(text)
  '.$titlebar.'
 <span class="boardlist">'.S_BOARDLIST.'</span>
 <span class="adminbar">
-[<a href="javascript:set_stylesheet(/'Yotsuba/')">Yotsuba</a>]  [<a href="javascript:set_stylesheet(/'Futaba/')">Futaba</a>] - 
+[<a href="javascript:set_stylesheet('."'".'Yotsuba'."'".')">Yotsuba</a>]  [<a href="javascript:set_stylesheet('."'".'Futaba'."'".')">Futaba</a>] - 
 [<a href="'.HOME.'" target="_top">'.S_HOME.'</a>]
 [<a href="'.PHP_SELF.'?mode=admin">'.S_ADMIN.'</a>]
 </span>
