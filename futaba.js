@@ -1,4 +1,16 @@
 // Взято из вакабы
+function set_cookie(name,value,days)
+{
+	if(days)
+	{
+		var date=new Date();
+		date.setTime(date.getTime()+(days*24*60*60*1000));
+		var expires="; expires="+date.toGMTString();
+	}
+	else expires="";
+	document.cookie=name+"="+value+expires+"; path=/";
+}
+// И это тоже
 function set_stylesheet(styletitle,norefresh)
 {
 	set_cookie("wakabastyle",styletitle,365);
