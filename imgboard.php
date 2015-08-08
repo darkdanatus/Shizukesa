@@ -410,6 +410,7 @@ if (SHOWTITLETXT == 1) {
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="jp"><head>
 <meta name="description" content="'.S_DESCR.'"/>
 <meta http-equiv="content-type"  content="text/html;charset=utf-8" />
+<script type="text/javascript" src="futaba.js"></script>
 <!-- meta HTTP-EQUIV="pragma" CONTENT="no-cache" -->
 <link REL="SHORTCUT ICON" HREF="/favicon.ico">
 <link rel="stylesheet" type="text/css" href="'.CSSFILE.'" title="Yotsuba" />
