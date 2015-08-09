@@ -579,7 +579,7 @@ function error($mes,$dest=''){
 }
 /* Auto Linker */
 function auto_link($proto){
-  $proto = ereg_replace("(https?|ftp|news)(://[[:alnum:]\+\$\;\?\.%,!#~*/:@&=_-]+)","<a href=\"\\1\\2\">\\1\\2</a>",$proto);
+  $proto = ereg_replace("(https?|ftp|news|http)(://[[:alnum:]\+\$\;\?\.%,!#~*/:@&=_-]+)","<a href=\"\\1\\2\">\\1\\2</a>",$proto);
   return $proto;
 }
 
@@ -634,6 +634,7 @@ function regist($name,$email,$sub,$com,$url,$pwd,$upfile,$upfile_name,$resto,$nu
       case 14 : $ext=".iff";break;
       case 15 : $ext=".wbmp";break;
       case 16 : $ext=".xbm";break;
+      case 17 : $ext=".webm";break;
 	  default : $ext=".xxx";error(S_BADFILEISBAD,$dest);
     }
 
