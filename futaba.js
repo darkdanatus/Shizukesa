@@ -1,4 +1,3 @@
-// Все это нагло спизженно из вакабы
 function get_cookie(name)
 {
 	with(document.cookie)
@@ -43,7 +42,7 @@ function get_password(name)
 
 function insert(text)
 {
-	var textarea=document.forms.postform.field4;
+	var textarea=document.forms.postform.nya4;
 	if(textarea)
 	{
 		if(textarea.createTextRange && textarea.caretPos) // IE
@@ -83,78 +82,103 @@ function highlight(post)
 	return true;
 }
 
-function set_stylesheet(title) {
-	var i, a, main;
-	for(i=0; (a = document.getElementsByTagName("link")[i]); i++) {	
-	if(a.getAttribute("rel").indexOf("style") != -1 && a.getAttribute("title")) 
-		{	
-			a.disabled = true;	
-			if(a.getAttribute("title") == title) a.disabled = false;
+
+function set_stylesheet_frame(styletitle,framename)
+{
+	set_stylesheet(styletitle);
+	var list = get_frame_by_name(framename);
+	if(list) set_stylesheet(styletitle,list);
+}
+
+function set_stylesheet(styletitle,target)
+{
+	set_cookie("wakabastyle",styletitle,365);
+
+	var links = target ? target.document.getElementsByTagName("link") : document.getElementsByTagName("link");
+	var found=false;
+	for(var i=0;i<links.length;i++)
+	{
+		var rel=links[i].getAttribute("rel");
+		var title=links[i].getAttribute("title");
+		if(rel.indexOf("style")!=-1&&title)
+		{
+			links[i].disabled=true; // IE needs this to work. IE needs to die.
+			if(styletitle==title) { links[i].disabled=false; found=true; }
 		}
 	}
+	if(!found)
+	{
+		if(target) set_preferred_stylesheet(target);
+		else set_preferred_stylesheet();
+	}
 }
- 
-function get_active_stylesheet(){
-	var i, a;
-	for(i=0; (a = document.getElementsByTagName("link")[i]); i++) 
-	{	
-		if(a.getAttribute("rel").indexOf("style") != -1 && a.getAttribute("title") && !a.disabled) 
-		return a.getAttribute("title");
-	} 
+
+function set_preferred_stylesheet(target)
+{
+	var links = target ? target.document.getElementsByTagName("link") : document.getElementsByTagName("link");
+	for(var i=0;i<links.length;i++)
+	{
+		var rel=links[i].getAttribute("rel");
+		var title=links[i].getAttribute("title");
+		if(rel.indexOf("style")!=-1&&title) links[i].disabled=(rel.indexOf("alt")!=-1);
+	}
+}
+
+function get_active_stylesheet()
+{
+	var links=document.getElementsByTagName("link");
+	for(var i=0;i<links.length;i++)
+	{
+		var rel=links[i].getAttribute("rel");
+		var title=links[i].getAttribute("title");
+		if(rel.indexOf("style")!=-1&&title&&!links[i].disabled) return title;
+	}
 	return null;
 }
 
 function get_preferred_stylesheet()
 {
-	var i, a;
-	for(i=0; (a = document.getElementsByTagName("link")[i]); i++) 
-	{	
-		if(a.getAttribute("rel").indexOf("style") != -1 && a.getAttribute("rel").indexOf("alt") == -1 && a.getAttribute("title")) 
-		return a.getAttribute("title");
+	var links=document.getElementsByTagName("link");
+	for(var i=0;i<links.length;i++)
+	{
+		var rel=links[i].getAttribute("rel");
+		var title=links[i].getAttribute("title");
+		if(rel.indexOf("style")!=-1&&rel.indexOf("alt")==-1&&title) return title;
 	}
 	return null;
 }
 
-function createCookie(name,value,days) 
+function get_frame_by_name(name)
 {
-	if (days) 
-	{	
-	var date = new Date();	
-	date.setTime(date.getTime()+(days*24*60*60*1000));	
-	var expires = "; expires="+date.toGMTString();
+	var frames = window.parent.frames;
+	for(i = 0; i < frames.length; i++)
+	{
+		if(name == frames[i].name) { return(frames[i]); }
 	}
-	else expires = "";
-	document.cookie = name+"="+value+expires+"; path=/";}
+}
 
-function readCookie(name) 
+function set_inputs(id,forcedanon)
 {
-	var nameEQ = name + "=";	
-	var ca = document.cookie.split(';');
-	for(var i=0;i < ca.length;i++) 
-	{	
-		var c = ca[i];	
-		while (c.charAt(0)==' ') c = c.substring(1,c.length);	
-		if (c.indexOf(nameEQ) == 0) 
-		return c.substring(nameEQ.length,c.length);
+	with(document.getElementById(id))
+	{
+		if(!forcedanon)
+			if(!nya1.value) nya1.value=get_cookie("name");
+		if(!nya2.value) nya2.value=get_cookie("email");
+		if(!password.value) password.value=get_password("password");
+		var choice = get_cookie("postredir");
+		for(i = 0; i < postredir.length; i++)
+		{
+			if(i == choice) postredir[i].checked = true;
+			else postredir[i].checked = false;
+		}
+		nya4.focus();
 	}
-	return null;
 }
 
-window.onload = function(e) {
-var cookie = readCookie("style");
-var title = cookie ? cookie : getPreferredStyleSheet();
-setActiveStyleSheet(title);
+function set_delpass(id)
+{
+	with(document.getElementById(id)) password.value=get_cookie("password");
 }
-window.onunload = function(e) {
-var title = get_active_stylesheet();
-createCookie("style", title, 365);
-}
-var cookie = readCookie("style"); 
-var title = cookie ? cookie : getPreferredStyleSheet();
-setActiveStyleSheet(title);
-
-function set_inputs(id) { with(document.getElementById(id)) {if(!field1.value) field1.value=get_cookie("name"); if(!field2.value) field2.value=get_cookie("email"); if(!password.value) password.value=get_password("password"); } }
-function set_delpass(id) { with(document.getElementById(id)) password.value=get_cookie("password"); }
 
 function do_ban(el)
 {
@@ -177,7 +201,7 @@ window.onload=function(e)
 	var match;
 
 	if(match=/#i([0-9]+)/.exec(document.location.toString()))
-	if(!document.forms.postform.field4.value)
+	if(!document.forms.postform.nya4.value)
 	insert(">>"+match[1]);
 
 	if(match=/#([0-9]+)/.exec(document.location.toString()))
