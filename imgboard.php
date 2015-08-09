@@ -412,9 +412,9 @@ if (SHOWTITLETXT == 1) {
 <meta http-equiv="content-type"  content="text/html;charset=utf-8" />
 <!-- meta HTTP-EQUIV="pragma" CONTENT="no-cache" -->
 <link REL="SHORTCUT ICON" HREF="/favicon.ico">
-<link rel="alternate stylesheet" type="text/css" href="'.CSS2FILE.'" title="Futaba" disabled />
+<link rel="alternate stylesheet" type="text/css" href="'.CSS2FILE.'" title="Futaba" disabled="" />
 <link rel="stylesheet" type="text/css" href="'.CSSFILE.'" title="Yotsuba" />
-<script type="text/javascript" src="futaba.js"></script>
+<script type="text/javascript">var style_cookie="wakabastyle";</script><style type="text/css"></style> <script type="text/javascript" src="futaba.js"></script> <script>(function(){window.onbeforeunload&&(window.onbeforeunload=null)})();</script></head>
 <title>'.TITLE.'</title>
 <script language="JavaScript"><!--
 function l(e){var P=getCookie("pwdc"),N=getCookie("namec"),i;with(document){for(i=0;i<forms.length;i++){if(forms[i].pwd)with(forms[i]){pwd.value=P;}if(forms[i].name)with(forms[i]){name.value=N;}}}};onload=l;function getCookie(key, tmp1, tmp2, xx1, xx2, xx3) {tmp1 = " " + document.cookie + ";";xx1 = xx2 = 0;len = tmp1.length;	while (xx1 < len) {xx2 = tmp1.indexOf(";", xx1);tmp2 = tmp1.substring(xx1 + 1, xx2);xx3 = tmp2.indexOf("=");if (tmp2.substring(0, xx3) == key) {return(unescape(tmp2.substring(xx3 + 1, xx2 - xx1 - 1)));}xx1 = xx2 + 1;}return("");}
