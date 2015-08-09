@@ -177,7 +177,7 @@ function set_inputs(id,forcedanon)
 
 function set_delpass(id)
 {
-	with(document.getElementById(id)) password.value=get_cookie("password");
+	with(document.getElementById(id)) password.value=get_cookie("pwd");
 }
 
 function do_ban(el)
