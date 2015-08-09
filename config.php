@@ -41,7 +41,7 @@ define(GLOBAL_MSG, '<center><font color=red></font></center>');									//4ch li
 //These are required, but you can change them.
 define(CSSFILE, 'yotsuba.css');							//location of the css file, also the default
 define(CSS2FILE, 'futaba.css');							//Second one
-
+define(CSS3FILE, 'inach.css');
 
 //Capcodes - show 'em who's boss (put it as your trip. IE: "name#CHANGEME" would result as "name## Admin ##!09EKYZv3TU")
 define("ADMIN_PASS", 'faggot');     	   						//admin pass
