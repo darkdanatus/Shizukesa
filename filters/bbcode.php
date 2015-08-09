@@ -4,6 +4,7 @@
     $com = preg_replace("/\*\*(.*)\*\*/Usi", "<b>\\1</b>", $com);
     $com = preg_replace("/\*(.*)\*/Usi", "<i>\\1</i>", $com);
     $com = preg_replace("/\%\%(.*)\%\%/Usi", "<span title=\"spoiler\" style=\"color: #000000; background-color: #000000;\" class=\"spoiler\" onmouseover=\"this.style.color='#FFFFFF';\" onmouseout=\"this.style.color=this.style.backgroundColor='#000000'\">\\1</span>", $com); 
+    $com = preg_replace("/\&\&(.*)youtube.com\/watch\?v=(.*)\&\&/Usi", "<object width=\"425\" height=\"344\"><param name=\"movie\" value=\"http://www.youtube.com/v/\\2&hl=de&fs=1\"></param><param name=\"allowFullScreen\" value=\"true\"></param><embed src=\"http://www.youtube.com/v/\\2&hl=de&fs=1\" type=\"application/x-shockwave-flash\" allowfullscreen=\"true\" width=\"425\" height=\"344\"></embed></object>", $com);
     // BBcode
     $com = preg_replace("/\[b\](.*)\[\/b\]/Usi", "<b>\\1</b>", $com);
     $com = preg_replace("/\[u\](.*)\[\/u\]/Usi", "<u>\\1</u>", $com);
