@@ -414,6 +414,7 @@ if (SHOWTITLETXT == 1) {
 <link REL="SHORTCUT ICON" HREF="/favicon.ico">
 <link rel="alternate stylesheet" type="text/css" href="'.CSS2FILE.'" title="Futaba" disabled="" />
 <link rel="stylesheet" type="text/css" href="'.CSSFILE.'" title="Yotsuba" />
+<link rel="alternate stylesheet" type="text/css" href="'.CSS3FILE.'" title="Inach.org" disabled="" />
 <script type="text/javascript">var style_cookie="wakabastyle";</script><style type="text/css"></style> <script type="text/javascript" src="futaba.js"></script> <script>(function(){window.onbeforeunload&&(window.onbeforeunload=null)})();</script></head>
 <title>'.TITLE.'</title>
 <script language="JavaScript"><!--
@@ -452,7 +453,7 @@ function insert(text)
  '.$titlebar.'
 <span class="boardlist">'.S_BOARDLIST.'</span>
 <span class="adminbar">
-[<a href="javascript:set_stylesheet('."'".'Yotsuba'."'".')">Yotsuba</a>]  [<a href="javascript:set_stylesheet('."'".'Futaba'."'".')">Futaba</a>] - 
+[<a href="javascript:set_stylesheet('."'".'Yotsuba'."'".')">Yotsuba</a>]  [<a href="javascript:set_stylesheet('."'".'Futaba'."'".')">Futaba</a>]  [<a href="javascript:set_stylesheet('."'".'Inach.org'."'".')">Inach.org</a>] - 
 [<a href="'.HOME.'" target="_top">'.S_HOME.'</a>]
 [<a href="'.PHP_SELF.'?mode=admin">'.S_ADMIN.'</a>]
 </span>
@@ -624,6 +625,7 @@ function regist($name,$email,$sub,$com,$url,$pwd,$upfile,$upfile_name,$resto,$nu
       case 4 : $ext=".swf";break;
       case 5 : $ext=".psd";break;
       case 6 : $ext=".bmp";break;
+      /*
       case 7 : $ext=".tiff";break;
       case 8 : $ext=".tiff";break;
       case 9 : $ext=".jpc";break;
@@ -634,7 +636,7 @@ function regist($name,$email,$sub,$com,$url,$pwd,$upfile,$upfile_name,$resto,$nu
       case 14 : $ext=".iff";break;
       case 15 : $ext=".wbmp";break;
       case 16 : $ext=".xbm";break;
-      case 17 : $ext=".webm";break;
+      case 17 : $ext=".webm";break;*/
 	  default : $ext=".xxx";error(S_BADFILEISBAD,$dest);
     }
 
