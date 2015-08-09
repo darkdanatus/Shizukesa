@@ -164,7 +164,7 @@ function set_inputs(id,forcedanon)
 		if(!forcedanon)
 			if(!nya1.value) nya1.value=get_cookie("name");
 		if(!nya2.value) nya2.value=get_cookie("email");
-		if(!password.value) password.value=get_password("password");
+		if(!password.value) password.value=get_password("pwd");
 		var choice = get_cookie("postredir");
 		for(i = 0; i < postredir.length; i++)
 		{
