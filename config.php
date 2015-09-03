@@ -1,10 +1,10 @@
 <?php
 //Essentials - You NEED to change these, or at least make sure they're good
-define(SQLLOG, 'CHANGEME');							//Table (NOT DATABASE) used by image board
-define(SQLHOST, 'CHANGEME');							//MySQL server address, usually localhost
-define(SQLUSER, 'CHANGEME');							//MySQL user (must be changed)
-define(SQLPASS, 'CHANGEME');							//MySQL user's password (must be changed)
-define(SQLDB, 'CHANGEME');								//Database used by image board
+define(SQLLOG, 'b');							//Table (NOT DATABASE) used by image board
+define(SQLHOST, 'localhost');							//MySQL server address, usually localhost
+define(SQLUSER, 'root');							//MySQL user (must be changed)
+define(SQLPASS, 'password');							//MySQL user's password (must be changed)
+define(SQLDB, 'database');								//Database used by image board
 
 //Basic settings
 define(PANEL_PASS, 'CHANGEME');							//Janitor password  (CHANGE THIS YO)
@@ -34,7 +34,7 @@ define(TRIPKEY, '!');									//this character is displayed before tripcodes
 define(MANTHUMBS, '1');									//Display thumbnails in manager panel
 define(BOTCHECK, '0');									//Use CAPTCHAs
 define(USE_BBCODE, '1');								//Use BBcode
-define(FORCED_ANON, '');									//Maximum upload size in KB
+define(FORCED_ANON, '0');									//Forced anonymity
 define(GLOBAL_MSG, '<center><font color=red></font></center>');									//4ch like global message..
 
 //CSS stuff.
