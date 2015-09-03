@@ -487,19 +487,19 @@ function form(&$dat,$resno,$admin=""){
 if($no){$dat.='<input type="hidden" name="resto" value="'.$no.'" />
 ';
 /*echo "-->";*/}
-
+if (FORCED_ANON == '0') {
+$anonshit = '<tr><td class="postblock" align="left">'.S_NAME.'</td><td align="left"><input type="text" name="name" size="28" /></td></tr>';
+} else {
+$anonshit = '';
+}
 if(!$admin&&BOTCHECK){
-$dat.='<table>
-<tr><td class="postblock" align="left">'.S_NAME.'</td><td align="left"><input type="text" name="name" size="28" /></td></tr>
-<tr><td class="postblock" align="left">'.S_EMAIL.'</td><td align="left"><input type="text" name="email" size="28" /></td></tr>
+$dat.='<table>'.$anonshit.'<tr><td class="postblock" align="left">'.S_EMAIL.'</td><td align="left"><input type="text" name="email" size="28" /></td></tr>
 <tr><td class="postblock" align="left">'.S_SUBJECT.'</td><td align="left"><input type="text" name="sub" size="28" />
 <input type="submit" value="'.S_SUBMIT.'" /></td></tr>
 <tr><td class="postblock" align="left">'.S_COMMENT.'</td><td align="left"><textarea name="com" cols="38" rows="4"></textarea></td></tr>
 <tr><td class="postblock" align="left"><img src="php_captcha.php" /></td><td align="left"><input type="text" name="num" size="28" /></td></tr>
 ';}elseif(!$admin&&BOTCHECK==0){
-$dat.='<table>
-<tr><td class="postblock" align="left">'.S_NAME.'</td><td align="left"><input type="text" name="name" size="28" /></td></tr>
-<tr><td class="postblock" align="left">'.S_EMAIL.'</td><td align="left"><input type="text" name="email" size="28" /></td></tr>
+$dat.='<table>'.$anonshit.'<tr><td class="postblock" align="left">'.S_EMAIL.'</td><td align="left"><input type="text" name="email" size="28" /></td></tr>
 <tr><td class="postblock" align="left">'.S_SUBJECT.'</td><td align="left"><input type="text" name="sub" size="25" />
 <input type="submit" value="'.S_SUBMIT.'" /></td></tr>
 <tr><td class="postblock" align="left">'.S_COMMENT.'</td><td align="left"><textarea name="com" cols="38" rows="4"></textarea></td></tr>
