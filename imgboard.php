@@ -143,8 +143,8 @@ $lskd_fix_loop=0;
       $size = $fsize;//file size displayed in alt text
           $ksize=round($size/1024);
       if($w && $h){//when there is size...
-        if(@is_file(THUMB_DIR.$tim.'s.jpg')){
-          $imgsrc = "    <span class=\"thumbnailmsg\">".S_THUMB."</span><br /><a href=\"".$src."\" target=_blank><img src=\"".THUMB_DIR.$tim.'s.jpg'.
+        if(@is_file(THUMB_DIR.$tim.'s.png')){
+          $imgsrc = "    <span class=\"thumbnailmsg\">".S_THUMB."</span><br /><a href=\"".$src."\" target=_blank><img src=\"".THUMB_DIR.$tim.'s.png'.
       "\" border=\"0\" align=\"left\" width=\"$w\" height=\"$h\" hspace=\"20\" alt=\"".$size." B\" /></a><br />";
         }else{
           $imgsrc = "<a href=\"".$src."\" target=_blank><img src=\"".$src.
@@ -263,8 +263,8 @@ $lskd_fix_loop=0;
       $size = $fsize;//file size displayed in alt text
           $ksize=round($size/1024);
       if($w && $h){//when there is size...
-        if(@is_file(THUMB_DIR.$tim.'s.jpg')){
-          $imgsrc = "    <br /><span class=\"thumbnailmsg\">".S_THUMB."</span><br /><a href=\"".$src."\" target=_blank><img src=\"".THUMB_DIR.$tim.'s.jpg'.
+        if(@is_file(THUMB_DIR.$tim.'s.png')){
+          $imgsrc = "    <br /><span class=\"thumbnailmsg\">".S_THUMB."</span><br /><a href=\"".$src."\" target=_blank><img src=\"".THUMB_DIR.$tim.'s.png'.
       "\" border=\"0\" align=\"left\" width=\"$w\" height=\"$h\" hspace=\"20\" alt=\"".$size." B\" /></a><br />";
         }else{
           $imgsrc = "<a href=\"".$src."\"><img src=\"".$src.
@@ -623,21 +623,20 @@ function regist($name,$email,$sub,$com,$url,$pwd,$upfile,$upfile_name,$resto,$nu
       case 2 : $ext=".jpg";break;
       case 3 : $ext=".png";break;
       case 4 : $ext=".swf";break;
-      case 5 : $ext=".psd";break;
-      case 6 : $ext=".bmp";break;
-      /*
-      case 7 : $ext=".tiff";break;
+      case 5 : $ext=".webm";break;
+/*    case 6 : $ext=".psd";break;
+      case 7 : $ext=".bmp";break;
       case 8 : $ext=".tiff";break;
-      case 9 : $ext=".jpc";break;
-      case 10 : $ext=".jp2";break;
-      case 11 : $ext=".jpx";break;
-      case 12 : $ext=".jb2";break;
-      case 13 : $ext=".swc";break;
-      case 14 : $ext=".iff";break;
-      case 15 : $ext=".wbmp";break;
-      case 16 : $ext=".xbm";break;
-      case 17 : $ext=".webm";break;*/
-	  default : $ext=".xxx";error(S_BADFILEISBAD,$dest);
+      case 9 : $ext=".tiff";break;
+      case 10 : $ext=".jpc";break;
+      case 11 : $ext=".jp2";break;
+      case 12 : $ext=".jpx";break;
+      case 13 : $ext=".jb2";break;
+      case 14 : $ext=".swc";break;
+      case 15 : $ext=".iff";break;
+      case 16 : $ext=".wbmp";break;
+      case 17 : $ext=".xbm";break;*/
+      default : $ext=".xxx";error(S_BADFILEISBAD,$dest);
     }
 
 	     if($W < MIN_W || $H < MIN_H){
@@ -679,7 +678,7 @@ function regist($name,$email,$sub,$com,$url,$pwd,$upfile,$upfile_name,$resto,$nu
       if(!mysql_call("delete from ".SQLLOG." where no=".$dno)){echo S_SQLFAIL;}
       if($dext){
         if(is_file($path.$dtim.$dext)) unlink($path.$dtim.$dext);
-        if(is_file(THUMB_DIR.$dtim.'s.jpg')) unlink(THUMB_DIR.$dtim.'s.jpg');
+        if(is_file(THUMB_DIR.$dtim.'s.png')) unlink(THUMB_DIR.$dtim.'s.png');
       }
     }
     mysql_free_result($result);
@@ -1041,8 +1040,8 @@ function thumb($path,$tim,$ext){
   }
   // Resizing
   if ($size[0] > $width || $size[1] >$height) {
-    $key_w = $width / $size[0];
-    $key_h = $height / $size[1];
+    $key_w = $width / $size[0] * 3;
+    $key_h = $height / $size[1] * 3;
     ($key_w < $key_h) ? $keys = $key_w : $keys = $key_h;
     $out_w = ceil($size[0] * $keys) +1;
     $out_h = ceil($size[1] * $keys) +1;
@@ -1057,12 +1056,14 @@ function thumb($path,$tim,$ext){
   // copy resized original
   ImageCopyResized($im_out, $im_in, 0, 0, 0, 0, $out_w, $out_h, $size[0], $size[1]);
   // thumbnail saved
-  ImageJPEG($im_out, $thumb_dir.$tim.'s.jpg',60);
-  chmod($thumb_dir.$tim.'s.jpg',0666);
+  ImagePNG($im_out, $thumb_dir.$tim.'s.png');
+  chmod($thumb_dir.$tim.'s.png',0666);
   // created image is destroyed
   ImageDestroy($im_in);
   ImageDestroy($im_out);
 }
+
+
 //check version of gd
 function get_gd_ver(){
   if(function_exists("gd_info")){
@@ -1147,7 +1148,7 @@ function usrdel($no,$pwd){
             if(!mysql_call("delete from ".SQLLOG." where no=".$dno)){echo S_SQLFAIL;} //sql is broke
           }
           if(is_file($delfile)) unlink($delfile);//Deletion
-          if(is_file(THUMB_DIR.$dtim.'s.jpg')) unlink(THUMB_DIR.$dtim.'s.jpg');//Deletion
+          if(is_file(THUMB_DIR.$dtim.'s.png')) unlink(THUMB_DIR.$dtim.'s.png');//Deletion
         }
       }
       mysql_free_result($result);
@@ -1201,7 +1202,7 @@ function admindel($pass){
         if(array_search($no,$delno)){//only a picture is deleted
           $delfile = $path.$tim.$ext;	//only a picture is deleted
           if(is_file($delfile)) unlink($delfile);//delete
-          if(is_file(THUMB_DIR.$tim.'s.jpg')) unlink(THUMB_DIR.$tim.'s.jpg');//delete
+          if(is_file(THUMB_DIR.$tim.'s.png')) unlink(THUMB_DIR.$tim.'s.png');//delete
         }
       }else{
         if(array_search($no,$delno)){//It is empty when deleting
@@ -1209,7 +1210,7 @@ function admindel($pass){
           if(!mysql_call("delete from ".SQLLOG." where no=".$no)){echo S_SQLFAIL;}
           $delfile = $path.$tim.$ext;	//Delete file
           if(is_file($delfile)) unlink($delfile);//Delete
-          if(is_file(THUMB_DIR.$tim.'s.jpg')) unlink(THUMB_DIR.$tim.'s.jpg');//Delete
+          if(is_file(THUMB_DIR.$tim.'s.png')) unlink(THUMB_DIR.$tim.'s.png');//Delete
         }
       }
     }
@@ -1284,7 +1285,7 @@ function admindel($pass){
     // Link to the picture
     if($ext && is_file($path.$tim.$ext)){
       $img_flag = TRUE;
-      $clip = "<a class=\"thumbnail\" target=\"_blank\" href=\"".IMG_DIR.$tim.$ext."\">".$tim.$ext."<span><img src=\"".THUMB_DIR.$tim.'s.jpg'."\" width=\"100\" height=\"100\" /></span></a><br />";
+      $clip = "<a class=\"thumbnail\" target=\"_blank\" href=\"".IMG_DIR.$tim.$ext."\">".$tim.$ext."<span><img src=\"".THUMB_DIR.$tim.'s.png'."\" width=\"100\" height=\"100\" /></span></a><br />";
       $size = $fsize;
       $all += $size;			//total calculation
       $md5= substr($md5,0,10);
