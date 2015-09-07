@@ -2,7 +2,7 @@ DirectoryIndex index.html
 AddCharset UTF-8 .html
 AddCharset UTF-8 .php
 # Banned
-ErrorDocument 403 /banned.html
+ErrorDocument 403 /banned.php
 
 <IfModule mod_headers.c>
 <Files *.html>
