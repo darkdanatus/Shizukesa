@@ -2,7 +2,7 @@
 Основанно на STIBS (Super Tiny Image Board Software)<br \>
 Чтобы работало сообщение о бане, перенесите banned.html в корень.<br \>
 # Установка
-Откройе config.php в gedit или другом текстовом редакторе.<br \>
+Откройте config.php в gedit или другом текстовом редакторе.<br \>
 define(SQLLOG, 'b') - Уникальный идентификатор доски<br \>
 define(SQLHOST, 'localhost'); - Адрес до сервера MySQL<br \>
 define(SQLUSER, 'root');	- Имя пользователя MySQL<br \>
