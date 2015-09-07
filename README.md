@@ -20,3 +20,11 @@ define(S_DESCR, 'An imageboard powered by Shizukesa'); - Мета-описани
 /b/thumb/ - 755<br \>
 /b/config.php - 755<br \>
 Все остальное - Я ставлю 777, лол.<br \>
+# Разметка
+WakabaMark:
+`__pod4erknutoe__`<br \>
+`%%spoiler%%`<br \>
+`**}|{up**`<br \>
+`*kosoe govno*`<br \>
+&&yt link&&<br \>
+Еще там есть bbcode..
