@@ -16,15 +16,13 @@ define(S_BOARDLIST, '[a / b / c] [d / e / f] [g / h / i] [j / k / l]'); - Тут
 define(S_DESCR, 'An imageboard powered by Shizukesa'); - Мета-описание<br \>
 # chmod
 /b/ - 777<br \>
-/b/src/ - 755<br \>
-/b/thumb/ - 755<br \>
+/b/* - 777<br \>
 /b/config.php - 755<br \>
-Все остальное - Я ставлю 777, лол.<br \>
 # Разметка
-WakabaMark:
+WakabaMark:<br \>
 `__pod4erknutoe__`<br \>
 `%%spoiler%%`<br \>
 `**}|{up**`<br \>
 `*kosoe govno*`<br \>
-&&yt link&&<br \>
+`&&yt link&&`<br \>
 Еще там есть bbcode..
