@@ -15,7 +15,7 @@ define("MOD_PASS", 'CHANGEMEPLZ'); - Мочератора.<br \>
 define(S_BOARDLIST, '[a / b / c] [d / e / f] [g / h / i] [j / k / l]'); - Тут должен быть полноценный список вида [&lt;a href="/a/"&gt;a&lt;/a&gt; / &lt;a href="/b/&gt;b&lt;/a&gt;]<br \>
 define(S_DESCR, 'An imageboard powered by Shizukesa'); - Мета-описание<br \>
 # chmod
-/b/ - 755<br \>
+/b/ - 777<br \>
 /b/src/ - 755<br \>
 /b/thumb/ - 755<br \>
 /b/config.php - 755<br \>
