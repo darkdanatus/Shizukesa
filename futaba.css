@@ -4,6 +4,11 @@ body {
 		 background-position:right top;
          color:#800000;
 }
+.highlight {
+	background:#F0E0D6;
+	color:#800000;
+	border: 2px dashed #EEAA88;
+}
 /*v new to saguaro v*/
 a.qu {
 		color:#800000;
