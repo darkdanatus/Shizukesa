@@ -1,7 +1,6 @@
 <?php 
 session_start();
 /*
-Based on STIBS
 Shizukesa
 */
 include "config.php";
@@ -136,27 +135,33 @@ $lskd_fix_loop=0;
 	
     // Picture file name
     $img = $path.$tim.$ext;
+    $size = GetImageSize($img);
     $src = IMG_DIR.$tim.$ext;
+/*
+    $size_123 = $fsize; // Lol
+    $ksize=round($size_123/1024);
+    Это ненужно
+*/
+    $ksize = round($fsize/1024); // Img size in KB
     // img tag creation
     $imgsrc = "";
     if($ext){
-      $size = $fsize;//file size displayed in alt text
-          $ksize=round($size/1024);
       if($w && $h){//when there is size...
         if(@is_file(THUMB_DIR.$tim.'s.png')){
-          $imgsrc = "    <span class=\"thumbnailmsg\">".S_THUMB."</span><br /><a href=\"".$src."\" target=_blank><img src=\"".THUMB_DIR.$tim.'s.png'.
-      "\" border=\"0\" align=\"left\" width=\"$w\" height=\"$h\" hspace=\"20\" alt=\"".$size." B\" /></a><br />";
+          $imgsrc = "    <span class=\"thumbnailmsg\">".S_THUMB."</span><br /><a target=\"_blank\" onclick=\"return expandImage(this, ".$size[0].", ".$size[1].")\" href=\"".$src."\"><img style=\"max-height:".$size[1]."px; max-width:".$size[0]."px;\" src=\"".THUMB_DIR.$tim.'s.png'. "\"border=\"0\" align=\"left\" width=\"$w\" height=\"$h\" hspace=\"20\" alt=\"".$fsize." B\" ></a></a><br />";
         }else{
-          $imgsrc = "<a href=\"".$src."\" target=_blank><img src=\"".$src.
-      "\" border=\"0\" align=\"left\" width=\"$w\" height=\"$h\" hspace=\"20\" alt=\"".$size." B\" /></a><br />";
+          $imgsrc = "<a onclick=\"return expandImage(this, ".$size[0].", ".$size[1].")\" href=\"".$src."\" target=_blank><img src=\"".$src.
+      "\" border=\"0\" align=\"left\" width=\"$w\" height=\"$h\" hspace=\"20\" alt=\"".$fsize." B\" /></a><br />";
         }
       }else{
-        $imgsrc = "<a href=\"".$src."\"><img src=\"".$src.
-      "\" border=\"0\" align=\"left\" hspace=\"20\" alt=\"".$size." B\" /></a><br />";
+        $imgsrc = "<a onclick=\"return expandImage(this, ".$size[0].", ".$size[1].")\" href=\"".$src."\"><img src=\"".$src.
+      "\" border=\"0\" align=\"left\" hspace=\"20\" alt=\"".$fsize." B\" /></a><br />";
       }
-      $dat.="<span class=\"filesize\">".S_PICNAME."<a href=\"$src\">$tim$ext</a>-($ksize KB)</span>$imgsrc";
+      $dat.="<span class=\"filesize\">".S_PICNAME."<a onclick=\"return expandImage(this, ".$size[0].", ".$size[1].")\" href=\"$src\">$tim$ext</a>-($ksize KB)</span>$imgsrc";
       
     }
+    
+   
     
     
         // word filters
@@ -256,25 +261,31 @@ $lskd_fix_loop=0;
 	 
     // Picture file name
     $img = $path.$tim.$ext;
+    $size = GetImageSize($img);
     $src = IMG_DIR.$tim.$ext;
-    // img tag creation
+/*
+    $size_123 = $fsize; // Lol
+    $ksize=round($size_123/1024);
+    Это ненужно
+*/
+    $ksize = round($fsize/1024); // Img size in KB
     $imgsrc = "";
     if($ext){
-      $size = $fsize;//file size displayed in alt text
-          $ksize=round($size/1024);
+      $size = GetImageSize($img);//file size displayed in alt text
+          $ksize=round($fsize/1024);
       if($w && $h){//when there is size...
         if(@is_file(THUMB_DIR.$tim.'s.png')){
-          $imgsrc = "    <br /><span class=\"thumbnailmsg\">".S_THUMB."</span><br /><a href=\"".$src."\" target=_blank><img src=\"".THUMB_DIR.$tim.'s.png'.
-      "\" border=\"0\" align=\"left\" width=\"$w\" height=\"$h\" hspace=\"20\" alt=\"".$size." B\" /></a><br />";
+          $imgsrc = "    <br /><span class=\"thumbnailmsg\">".S_THUMB."</span><br /><a onclick=\"return expandImage(this, ".$size[0].", ".$size[1].")\" href=\"".$src."\" target=_blank><img src=\"".THUMB_DIR.$tim.'s.png'.
+      "\" border=\"0\" align=\"left\" width=\"$w\" height=\"$h\" hspace=\"20\" alt=\"".$fsize." B\" /></a><br />";
         }else{
-          $imgsrc = "<a href=\"".$src."\"><img src=\"".$src.
-      "\" border=\"0\" align=\"left\" width=\"$w\" height=\"$h\" hspace=\"20\" alt=\"".$size." B\" /></a><br />";
+          $imgsrc = "<a onclick=\"return expandImage(this, ".$size[0].", ".$size[1].")\" href=\"".$src."\"><img src=\"".$src.
+      "\" border=\"0\" align=\"left\" width=\"$w\" height=\"$h\" hspace=\"20\" alt=\"".$fsize." B\" /></a><br />";
         }
       }else{
-        $imgsrc = "<a href=\"".$src."\"><img src=\"".$src.
-      "\" border=\"0\" align=\"left\" hspace=\"20\" alt=\"".$size." B\" /></a><br />";
+        $imgsrc = "<a onclick=\"return expandImage(this, ".$size[0].", ".$size[1].")\" href=\"".$src."\"><img src=\"".$src.
+      "\" border=\"0\" align=\"left\" hspace=\"20\" alt=\"".$fsize." B\" /></a><br />";
       }
-      $dat.="<br /><span class=\"filesize\">".S_PICNAME."<a href=\"$src\">$tim$ext</a>-($ksize KB)</span>$imgsrc";
+      $dat.="<br /><span class=\"filesize\">".S_PICNAME."<a onclick=\"return expandImage(this, ".$size[0].", ".$size[1].")\" href=\"$src\">$tim$ext</a>-($ksize KB)</span>$imgsrc";
     }
 	
 			   // word filters
@@ -408,6 +419,8 @@ if (SHOWTITLETXT == 1) {
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="jp"><head>
+<script>function expandImage(t, width, height) {var img = null;for (var k=0; k<t.childNodes.length;k++) {if (!img && t.childNodes[k].nodeType == 1 && t.childNodes[k].tagName == \'IMG\') img = t.childNodes[k];}if (!img) return;if (typeof t.data == \'undefined\') t.data = \'\';if (typeof t.dataWidth == \'undefined\') t.dataWidth = \'\';if (t.data == \'\') {width = ( width > (window.innerWidth-100) )? (window.innerWidth-100):width;t.data = img.src;if (t.parentNode.tagName == \'DIV\') {if (t.nextSibling.nextSibling.tagName == \'BLOCKQUOTE\') {t.nextSibling.nextSibling.style.paddingLeft = \'0px\';if (t.nextSibling.nextSibling.style.marginRight == \'40px\') {t.nextSibling.nextSibling.style.marginLeft = \'40px\';}if (t.nextSibling.nextSibling.style.marginRight == \'20px\') {t.nextSibling.nextSibling.style.marginLeft = \'20px\';}if (t.nextSibling.nextSibling.getElementsByTagName(\'PRE\')[0]) {t.nextSibling.nextSibling.getElementsByTagName(\'PRE\')[0].style.width = \'100%\';}}}if (img.width) t.dataWidth = img.width;if (!!img.height) delete img.height;if (!!img.width) delete img.width;img.style.width = width + \'px\';img.style.height = \'auto\';img.src = t.href;} else {img.src = t.data;img.style.width = t.dataWidth + \'px\';t.data = \'\';if (t.parentNode.tagName == \'DIV\') {if (t.nextSibling.nextSibling.tagName == \'BLOCKQUOTE\') {t.nextSibling.nextSibling.style.paddingLeft = parseInt(img.style.width)+ 20 + \'px\';if (t.nextSibling.nextSibling.getElementsByTagName(\'PRE\')[0]) {if (window.innerWidth >= 480) {console.log(\'11window.innerWidth = \'+window.innerWidth);t.nextSibling.nextSibling.getElementsByTagName(\'PRE\')[0].style.width = \'\';} else {t.nextSibling.nextSibling.getElementsByTagName(\'PRE\')[0].style.width = \'100%\';}console.log(\'window.innerWidth = \'+window.innerWidth);}}}}return false;}
+</script>
 <meta name="description" content="'.S_DESCR.'"/>
 <meta http-equiv="content-type"  content="text/html;charset=utf-8" />
 <!-- meta HTTP-EQUIV="pragma" CONTENT="no-cache" -->
@@ -1285,7 +1298,7 @@ function admindel($pass){
     // Link to the picture
     if($ext && is_file($path.$tim.$ext)){
       $img_flag = TRUE;
-      $clip = "<a class=\"thumbnail\" target=\"_blank\" href=\"".IMG_DIR.$tim.$ext."\">".$tim.$ext."<span><img src=\"".THUMB_DIR.$tim.'s.png'."\" width=\"100\" height=\"100\" /></span></a><br />";
+      $clip = "<a class=\"thumbnail\" onclick=\"return expandImage(this, ".$size[0].", ".$size[1].")\" target=\"_blank\" href=\"".IMG_DIR.$tim.$ext."\">".$tim.$ext."<span><img style=\"max-height:".$size[1]."px; max-width:".$size[0]."px;\" src=\"".THUMB_DIR.$tim.'s.png'."\" width=\"100\" height=\"100\" /></span></a><br />";
       $size = $fsize;
       $all += $size;			//total calculation
       $md5= substr($md5,0,10);
