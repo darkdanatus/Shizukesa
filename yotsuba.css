@@ -84,3 +84,6 @@ blockquote{
         font-size:12px;
         color:#800000;
 }
+.highlight {
+    background: none repeat scroll 0 0 #f0c0b0;
+}
