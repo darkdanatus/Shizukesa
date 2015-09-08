@@ -1053,8 +1053,8 @@ function thumb($path,$tim,$ext){
   }
   // Resizing
   if ($size[0] > $width || $size[1] >$height) {
-    $key_w = $width / $size[0] * 3;
-    $key_h = $height / $size[1] * 3;
+    $key_w = $width / $size[0] * 2;
+    $key_h = $height / $size[1] * 2;
     ($key_w < $key_h) ? $keys = $key_w : $keys = $key_h;
     $out_w = ceil($size[0] * $keys) +1;
     $out_h = ceil($size[1] * $keys) +1;
