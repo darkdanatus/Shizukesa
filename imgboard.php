@@ -1066,10 +1066,17 @@ function thumb($path,$tim,$ext){
   if(function_exists("ImageCreateTrueColor")&&get_gd_ver()=="2"){
     $im_out = ImageCreateTrueColor($out_w, $out_h);
   }else{$im_out = ImageCreate($out_w, $out_h);}
+  ImageAlphaBlending( $im_out, false );
+  ImageSaveAlpha( $im_out, true );
   // copy resized original
-  ImageCopyResized($im_out, $im_in, 0, 0, 0, 0, $out_w, $out_h, $size[0], $size[1]);
+  ImageCopyResampled( $im_out, $im_in, 0, 0, 0, 0, $out_w, $out_h, $size[0], $size[1] );
   // thumbnail saved
-  ImagePNG($im_out, $thumb_dir.$tim.'s.png');
+  if ( $ext == ".gif" || $ext == ".png" ) {
+    ImagePNG( $im_out, $thumb_dir.$tim.'s.png', 6);
+  } else {
+    ImageJPEG( $im_out, $thumb_dir.$tim.'s.png', 60 );
+  }
+
   chmod($thumb_dir.$tim.'s.png',0666);
   // created image is destroyed
   ImageDestroy($im_in);
