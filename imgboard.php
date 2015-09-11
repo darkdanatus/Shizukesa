@@ -415,6 +415,10 @@ if (SHOWTITLETXT == 1) {
 }
 //echo "<!--";
 /* print page */
+/* css define */
+$css1_file = substr(ucwords(strtolower(CSSFILE)), 0, -4);
+$css2_file = substr(ucwords(strtolower(CSS2FILE)), 0, -4);
+$css3_file = substr(ucwords(strtolower(CSS3FILE)), 0, -4);
   $dat.='
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 	"http://www.w3.org/TR/html4/loose.dtd">
@@ -425,9 +429,9 @@ if (SHOWTITLETXT == 1) {
 <meta http-equiv="content-type"  content="text/html;charset=utf-8" />
 <!-- meta HTTP-EQUIV="pragma" CONTENT="no-cache" -->
 <link REL="SHORTCUT ICON" HREF="/favicon.ico">
-<link rel="alternate stylesheet" type="text/css" href="'.CSS2FILE.'" title="Futaba" disabled="" />
-<link rel="stylesheet" type="text/css" href="'.CSSFILE.'" title="Yotsuba" />
-<link rel="alternate stylesheet" type="text/css" href="'.CSS3FILE.'" title="Inach.org" disabled="" />
+<link rel="alternate stylesheet" type="text/css" href="'.CSS2FILE.'" title="'.$css2_file.'" disabled="" />
+<link rel="stylesheet" type="text/css" href="'.CSSFILE.'" title="'.$css1_file.'" />
+<link rel="alternate stylesheet" type="text/css" href="'.CSS3FILE.'" title="'.$css3_file.'" disabled="" />
 <script type="text/javascript">var style_cookie="wakabastyle";</script><style type="text/css"></style> <script type="text/javascript" src="futaba.js"></script> <script>(function(){window.onbeforeunload&&(window.onbeforeunload=null)})();</script></head>
 <title>'.TITLE.'</title>
 <script language="JavaScript"><!--
