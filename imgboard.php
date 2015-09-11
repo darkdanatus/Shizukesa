@@ -113,12 +113,11 @@ $lskd_fix_loop=0;
     if(!$no){break;}
 
     // URL and link
-	// if not in a thread 	
-	//	if(!$resno){
-    $threadurl="".PHP_SELF."?res=$no";
-	//    }else{
-	//    $threadurl="\"";}
-	// blah	
+	if(MODREWRITE == '0'){
+		$threadurl="".PHP_SELF."?res=$no";
+	} else {
+		$threadurl=$no;
+	}
     if($email) $name = "<a href=\"mailto:$email\">$name</a>";
 
 	$com = preg_replace("/(^|>)(&gt;[^<]*|„[^<]*)/",
@@ -183,8 +182,11 @@ $lskd_fix_loop=0;
     //  Main creation
 	//op post
 	
-	//>> function.
-    $threadurl2="".PHP_SELF."?res=$no";
+	if(MODREWRITE == '0'){
+		$threadurl2="".PHP_SELF."?res=$no";
+	} else {
+		$threadurl2=$no;
+	}
 	$threadurl33="$no";
     if ($resno){
     $onclick=" onclick=\"replyhl('$no');\" class=qu";
@@ -195,13 +197,22 @@ $lskd_fix_loop=0;
     $quote="\"$threadurl2#q$no\"";
     }
 
+	if(MODREWRITE == '0'){
     $dat.="<input type=\"checkbox\" name=\"$no\" value=\"delete\" /><span class=\"filetitle\">$sub</span>   \n";
     $dat.="<span class=\"postername\"><b>$name</b></span> $now ".
 	"<a id=\"$no\" href=\"$threadurl#$no\" class=\"qu\" title=\"".S_PERMALINK."\" $onclick>No.</a>".
 	"<a href=$quote title=\"".S_QUOTE."\" class=\"qu\">$no</a> &nbsp; \n";
     if(!$resno) $dat.="[<a href=\"".PHP_SELF."?res=$no\">".S_REPLY."</a>]";
     $dat.="\n<blockquote>$com</blockquote>";
-
+	} else {
+    $dat.="<input type=\"checkbox\" name=\"$no\" value=\"delete\" /><span class=\"filetitle\">$sub</span>   \n";
+    $dat.="<span class=\"postername\"><b>$name</b></span> $now ".
+	"<a id=\"$no\" href=\"$threadurl#$no\" class=\"qu\" title=\"".S_PERMALINK."\" $onclick>No.</a>".
+	"<a href=$quote title=\"".S_QUOTE."\" class=\"qu\">$no</a> &nbsp; \n";
+    if(!$resno) $dat.="[<a href=\"$no\">".S_REPLY."</a>]";
+    $dat.="\n<blockquote>$com</blockquote>";
+	}
+	
      // Deletion pending
      if($lastno-LOG_MAX*0.95>$no){
       $dat.="<span class=\"oldpost\">".S_OLD."</span><br />\n";
