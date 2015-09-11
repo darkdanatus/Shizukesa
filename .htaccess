@@ -3,6 +3,11 @@ AddCharset UTF-8 .html
 AddCharset UTF-8 .php
 # Banned
 ErrorDocument 403 /banned.php
+# Short res link f.e. "/b/254"
+RewriteEngine on
+Options +FollowSymLinks
+
+RewriteRule ^([0-9])/?$ imgboard.php?res=$1 [NC,L]
 
 <IfModule mod_headers.c>
 <Files *.html>
