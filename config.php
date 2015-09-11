@@ -13,6 +13,7 @@ define(S_HEADSUB, '<center><font size=1></font><center>');  			//subtitle undern
 define(SHOWTITLETXT, '1');								//Show TITLE at top (1: yes  0: no) [you shouldn't disable this btw]
 define(SHOWTITLEIMG, '0');								//Show image at top (0: no, 1: single, 2: rotating)
 define(TITLEIMG, '');									//Title image (point to php file if rotating)
+define(MODREWRITE, '1');              // If your host supports mod_rewrite, enable it
 
 //From here down all these settings are optional.
 
