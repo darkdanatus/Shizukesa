@@ -481,7 +481,7 @@ function insert(text)
  '.$titlebar.'
 <span class="boardlist">'.S_BOARDLIST.'</span>
 <span class="adminbar">
-[<a href="javascript:set_stylesheet('."'".'Yotsuba'."'".')">Yotsuba</a>]  [<a href="javascript:set_stylesheet('."'".'Futaba'."'".')">Futaba</a>]  [<a href="javascript:set_stylesheet('."'".'Inach.org'."'".')">Inach.org</a>] - 
+[<a href="javascript:set_stylesheet('."'".$css1_file."'".')">'.$css1_file.'</a>]  [<a href="javascript:set_stylesheet('."'".$css2_file."'".')">'.$css2_file.'</a>]  [<a href="javascript:set_stylesheet('."'".$css3_file."'".')">'.$css3_file.'</a>] - 
 [<a href="'.HOME.'" target="_top">'.S_HOME.'</a>]
 [<a href="'.PHP_SELF.'?mode=admin">'.S_ADMIN.'</a>]
 </span>
