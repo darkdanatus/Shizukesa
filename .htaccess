@@ -7,7 +7,7 @@ ErrorDocument 403 /banned.php
 RewriteEngine on
 Options +FollowSymLinks
 
-RewriteRule ^([0-9])/?$ imgboard.php?res=$1 [NC,L]
+RewriteRule ^([0-9]+)/?$ imgboard.php?res=$1 [NC,L]
 
 <IfModule mod_headers.c>
 <Files *.html>
