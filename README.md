@@ -1,6 +1,6 @@
 # Shizukesa
 Основанно на STIBS (Super Tiny Image Board Software)<br \>
-Чтобы работало сообщение о бане, перенесите banned.html в корень.<br \>
+Чтобы работало сообщение о бане, перенесите banned.php в корень.<br \>
 # Установка
 Откройте config.php в gedit или другом текстовом редакторе.<br \>
 `define(SQLLOG, 'b');` - Уникальный идентификатор доски<br \>
@@ -25,5 +25,5 @@ WakabaMark:<br \>
 `%%spoiler%%`<br \>
 `**}|{up**`<br \>
 `*kosoe govno*`<br \>
-`&&yt link&&`<br \>
+`&&B2JplQgMfis&&` - YouTube (Из ссылки `http://www.youtube.com/watch?v=B2JplQgMfis` берем код `B2JplQgMfis`)<br \>
 Еще там есть bbcode..
