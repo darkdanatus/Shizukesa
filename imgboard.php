@@ -3,6 +3,7 @@ session_start();
 /*
 Shizukesa
 */
+error_reporting(0); // For hostinger (Because of depricated)
 include "config.php";
 include "strings_ru.php";		// Язык
 
