@@ -8,7 +8,7 @@ define(SQLDB, 'database');								//Database used by image board
 
 //Basic settings
 define(PANEL_PASS, 'CHANGEME');							//Janitor password  (CHANGE THIS YO)
-define(TITLE, '/b/ - Random');				//Name of this image board
+define(TITLE, '/b/ - Бред');				//Name of this image board
 define(S_HEADSUB, '<center><font size=1></font><center>');  			//subtitle underneath title
 define(SHOWTITLETXT, '1');								//Show TITLE at top (1: yes  0: no) [you shouldn't disable this btw]
 define(SHOWTITLEIMG, '0');								//Show image at top (0: no, 1: single, 2: rotating)
@@ -16,6 +16,16 @@ define(TITLEIMG, '');									//Title image (point to php file if rotating)
 define(MODREWRITE, '1');              // If your host supports mod_rewrite, enable it
 
 //From here down all these settings are optional.
+
+// JavaScript & JQuery stuff
+define(JS_PATH, 'jquery');	    //Path to this shit
+define(USE_JS_SETTINGS, 1); //Include the JS suite's settings - enables user side settings
+define(USE_UTIL_QUOTE, 1);  //Use utility quotes
+define(USE_INF_SCROLL, 1);  //Use infinite scroll
+define(USE_FORCE_WRAP, 1);  //Use forced post wrapping
+define(USE_UPDATER, 1);     //Use thread updater
+define(USE_FAST_REP, 1);      //Use fast reply
+define(USE_CSS, 1);      //Use custom css
 
 //Extra settings - No need to change these for a basic installation, but you may want these options
 define(MAX_KB, '2048');									//Maximum upload size in KB
@@ -33,16 +43,16 @@ define(DISP_ID, 1);										//Display user IDs (1: yes  0: no)
 define(BR_CHECK, 0);									//Max lines per post (0 = no limit)
 define(TRIPKEY, '!');									//this character is displayed before tripcodes
 define(MANTHUMBS, '1');									//Display thumbnails in manager panel
-define(BOTCHECK, '0');									//Use CAPTCHAs
+define(BOTCHECK, '1');									//Use CAPTCHAs
 define(USE_BBCODE, '1');								//Use BBcode
-define(FORCED_ANON, '0');									//Forced anonymity
+define(FORCED_ANON, '1');									//Forced anonymity
 define(GLOBAL_MSG, '<center><font color=red></font></center>');									//4ch like global message..
 
 //CSS stuff.
 //These are required, but you can change them.
 define(CSSFILE, 'yotsuba.css');							//location of the css file, also the default
-define(CSS2FILE, 'futaba.css');							//Second one
-define(CSS3FILE, 'kusaba.css');
+define(CSS2FILE, 'kusaba.css');							//Second one
+define(CSS3FILE, 'futaba.css');
 
 //Capcodes - show 'em who's boss (put it as your trip. IE: "name#CHANGEME" would result as "name## Admin ##!09EKYZv3TU")
 define("ADMIN_PASS", 'faggot');     	   						//admin pass

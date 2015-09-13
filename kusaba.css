@@ -1,195 +1,202 @@
-body {
-    background: #EEFFEE;
-    color: #;
-    font-size: 12pt;
+html, body {
+         font-size:12pt;
+         background:#EEFFEE;
+         color: #000000;
 }
-form {
-margin: 0px 0px 0px 0px; 
-}
-a.qu {
-    color: #800000;
-    font-size: 12pt;
-    text-decoration: none;
-}
-a.qu:hover {
-    color: #800000;
-    font-size: 12pt;
-    font-weight: bold;
-    text-decoration: none;
-}
-a.qu:visited {
-    color: #800000;
-    font-size: 12pt;
-    text-decoration: none;
-}
-a {
-    background: inherit;
-    color: #345C34;
-    font-family: serif;
-    text-decoration: underline;
+a       {
+        background:inherit;
+        color:#345C34;
+        text-decoration:none;
+        font-family:sans-serif;
 }
 a:visited {
-    background: inherit;
-    color: #345C34;
-    font-family: serif;
-    text-decoration: underline;
+        background:inherit;
+        color:#345C34;
+        text-decoration:none;
+        font-family:sans-serif;
 }
 a:hover {
-    background: inherit;
-    color: #117743;
-    font-family: serif;
-    text-decoration: underline;
+        color:#117743;
+        background:inherit;
+        text-decoration:underline;
+        font-family:sans-serif;
 }
 .adminbar {
-    background: inherit;
-    clear: both;
-    float: right;
-    text-align: right;
+        text-align:right;
+        background:inherit;
+        clear:both;
+        float:right;
 }
 .logo {
-    background: inherit;
-    clear: both;
-    color: #117743;
-    font-size: 24pt;
-    text-align: center;
-    width: 100%;
+        clear:both;
+        text-align:center;
+        background:inherit;
+        font-size:24pt;
+        color:#117743;
+        width:100%;
 }
 .theader {
-    background: none repeat scroll 0 0 #00E010;
-    color: #FFFFFF;
-    width: 100%;
-}
-.headsub {
-    background: inherit;
-    color: #666666;
-    font-family: sans-serif;
-    font-size: 11px;
-    text-align: center;
-}
-.boardlist {
-    background: inherit;
-    color: #000000;
-    text-align: left;
+        background: #88DD88;
+        color:#FFFFFF;
+        width:100%;
+        text-align: center;
 }
 .postarea {
-    background: inherit;
+        background:inherit;
 }
 .rules {
-    font-family: sans-serif;
-    font-size: 10px;
+        font-size:10px;
+        font-family:sans-serif;
 }
 .postblock {
-    background: none repeat scroll 0 0 #88DD88;
-    color: #800000;
-    font-weight: 800;
+        background:#88DD88;
+        color:#000000;
+        font-weight:800;
 }
 .footer {
-    font-family: serif;
-    font-size: 12px;
-    text-align: center;
+        text-align:center;
+        font-size:10px;
+        font-family:sans-serif;
 }
 .passvalid {
-    background: none repeat scroll 0 0 #EEAA88;
-    color: #FFFFFF;
-    text-align: center;
-    width: 100%;
+	background:#99EE88;
+	text-align:center;
+	width:100%;
+	color:#ffffff;
 }
 .dellist {
-    background: inherit;
-    text-align: center;
+	background:inherit;
+	text-align:center;
 }
 .delbuttons {
-    background: inherit;
-    padding-bottom: 4px;
-    text-align: center;
+	background:inherit;
+	text-align:center;
+	padding-bottom:4px;
+
 }
 .managehead {
-    background: none repeat scroll 0 0 #0F8FE1;
-    color: #800000;
-    font-family: sans-serif;
-    font-size: 14px;
-    padding: 0;
+	background:#0FE18F;
+	color:#000000;
+	font-family:sans-serif;
+	font-size:14px;
+	padding:0px;
 }
 .postlists {
-    background: none repeat scroll 0 0 #FFFFFF;
-    color: #800000;
-    padding: 0;
-    width: 100%;
+	background:#FFFFFF;
+	width:100%;
+	padding:0px;
+	color:#000000;
 }
 .row1 {
-    background: none repeat scroll 0 0 #9AD2F6;
-    color: #800000;
-    font-family: sans-serif;
-    font-size: 12px;
+	background:#9AF6D2;
+	font-family:sans-serif;
+	font-size:12px;
+	color:#000000;
 }
 .row2 {
-    background: none repeat scroll 0 0 #FFFFFF;
-    color: #800000;
-    font-family: sans-serif;
-    font-size: 12px;
+        background:#FFFFFF;
+        font-family:sans-serif;
+        font-size:12px;
+        color:#000000;
 }
 .unkfunc {
-    color: #789922;
+	color:#117743;
 }
 .filesize {
-    font-family: serif;
-    font-size: 16px;
-    text-decoration: none;
+	font-size:12px;
+	font-family:sans-serif;
+	text-decoration:underline;
+	padding-left:3em;
 }
 .filetitle {
-    background: inherit;
-    color: #0F5D0C;
-    font-family: serif;
-    font-size: 18px;
-    font-weight: 800;
+	background:inherit;
+	font-size:18px;
+	font-family:serif;
+	color:#0F5D0C;
+	font-weight:800;
 }
 .postername {
-    background: inherit;
-    color: #117743;
-    font-family: serif;
-    font-size: 16px;
+	background:inherit;
+	font-family:serif;
+	color:#117743;
+	font-weight:bold;
+}
+.postername a {
+	font-family:inherit;
 }
 .oldpost {
-    background: inherit;
-    color: #CC1105;
-    font-family: serif;
-    font-size: 18px;
-    font-weight: 800;
+        background:inherit;
+        font-size:18px;
+        font-family:serif;
+        color:#0F5D0C;
+        font-weight:800;
 }
 .omittedposts {
-    background: inherit;
-    color: #666666;
-    font-family: serif;
-    font-size: 11px;
-    font-weight: 800;
+        background:inherit;
+        /* font-size:18px; */
+        font-family:serif;
+        color: #677D72;
+        /* font-weight:800; */
 }
 .reply {
-    background: none repeat scroll 0 0 #DAF0D6;
-    color: #800000;
-    font-family: serif;
+	background:#DAF0D6;
+	color:#000000;
+	font-family:serif;
 }
 .doubledash {
-    clear: both;
-    float: left;
-    vertical-align: top;
+ 	vertical-align:top;
+	clear:both;
+	float:left;
 }
 .replytitle {
-    background: inherit;
-    color: #0F5D0C;
-    font-family: serif;
-    font-size: 18px;
-    font-weight: 800;
+        background:inherit;
+        font-size:18px;
+        font-family:serif;
+        color:#0F5D0C;
+        font-weight:800;
 }
 .commentpostername {
-    background: inherit;
-    color: #117743;
-    font-family: serif;
-    font-size: 16px;
-    font-weight: 800;
+        background:inherit;
+        font-size:12px;
+        font-family:serif;
+        color:#117743;
+        font-weight:800;
 }
 .thumbnailmsg {
-    background: inherit;
-    color: #800000;
-    font-family: sans-serif;
-    font-size: 9px;
+	background:inherit;
+	font-size:9px;
+	font-family:sans-serif;
+	color:#000000;
 }
+
+.highlight {
+	background: #88DD88;
+	border: 2px dashed #117743;
+}
+
+#watchedthreads {
+	background-color: #DAF0D6 !important;
+  	border: 1px solid #88DD88 !important;
+}
+
+.replymode {
+	background:#DAF0D6;
+	text-align:center;
+	padding:2px;
+	color:#000000;
+	width:100%;
+	font-weight: bold;
+}
+.catalogmode {
+	background:#88DD88;
+	text-align:center;
+	padding:2px;
+	color:#000000;
+	width:100%;
+	font-weight: bold;
+}
+
+.reflinkpreview {
+	background-color: #DAF0D6 !important;
+}
+

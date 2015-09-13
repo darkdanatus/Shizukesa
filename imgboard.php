@@ -125,7 +125,7 @@ $lskd_fix_loop=0;
     $com = preg_replace("/(^|>)(&gt;&gt;[^0-9])/",
      "$1 $2", $com);
     $com = preg_replace("/(^|>)(&gt;&gt;)([(0-9)+]*)([^<]*)/",
-     "$1</font><a href=\"$threadurl#$3\" onclick=\"replyhl('$3');\">$2$3</a>$4<font>", $com);
+     "$1</font><a href=\"$threadurl#$3\" onclick=\"\" onclick=\"replyhl('$3');\">$2$3</a>$4<font>", $com);
 	
 	/*    $com = eregi_replace("(^|>)(&gt;[^<]*)", "\\1<div class=\"unkfunc\">\\2</div>", $com);
 	$com = eregi_replace("/(^|>)(&gt;&gt;)([(0-9)+]*)([^<]*)",
@@ -147,14 +147,14 @@ $lskd_fix_loop=0;
     if($ext){
       if($w && $h){//when there is size...
         if(@is_file(THUMB_DIR.$tim.'s.png')){
-          $imgsrc = "    <span class=\"thumbnailmsg\">".S_THUMB."</span><br /><a target=\"_blank\" onclick=\"return expandImage(this, ".$size[0].", ".$size[1].")\" href=\"".$src."\"><img style=\"max-height:".$size[1]."px; max-width:".$size[0]."px;\" src=\"".THUMB_DIR.$tim.'s.png'. "\"border=\"0\" align=\"left\" width=\"$w\" height=\"$h\" hspace=\"20\" alt=\"".$fsize." B\" ></a></a><br />";
+          $imgsrc = "    <span class=\"thumbnailmsg\">".S_THUMB."</span><br /><a target=\"_blank\" onclick=\"return expandImage(this, ".$size[0].", ".$size[1].")\" href=\"".$src."\"><img style=\"max-height:".$size[1]."px; max-width:".$size[0]."px;\" src=\"".THUMB_DIR.$tim.'s.png'. "\"border=\"0\" align=\"left\" width=\"$w\" height=\"$h\" hspace=\"20\" vspace=\"5\" alt=\"".$fsize." B\" ></a></a><br />";
         }else{
           $imgsrc = "<a onclick=\"return expandImage(this, ".$size[0].", ".$size[1].")\" href=\"".$src."\" target=_blank><img src=\"".$src.
-      "\" border=\"0\" align=\"left\" width=\"$w\" height=\"$h\" hspace=\"20\" alt=\"".$fsize." B\" /></a><br />";
+      "\" border=\"0\" align=\"left\" width=\"$w\" height=\"$h\" hspace=\"20\" vspace=\"5\" alt=\"".$fsize." B\" /></a><br />";
         }
       }else{
         $imgsrc = "<a onclick=\"return expandImage(this, ".$size[0].", ".$size[1].")\" href=\"".$src."\"><img src=\"".$src.
-      "\" border=\"0\" align=\"left\" hspace=\"20\" alt=\"".$fsize." B\" /></a><br />";
+      "\" border=\"0\" align=\"left\" hspace=\"20\" vspace=\"5\" alt=\"".$fsize." B\" /></a><br />";
       }
       $dat.="<span class=\"filesize\">".S_PICNAME."<a onclick=\"return expandImage(this, ".$size[0].", ".$size[1].")\" href=\"$src\">$tim$ext</a>-($ksize KB)</span>$imgsrc";
       
@@ -191,10 +191,10 @@ $lskd_fix_loop=0;
     if ($resno){
     $onclick=" onclick=\"replyhl('$no');\" class=qu";
 //    $quote="javascript:setData('&gt;&gt;$no')";
-	$quote="javascript:insert('&gt;&gt;$no')";
+	$quote="javascript:jq.quick_reply.spawn_window($(this).text());";
     }
     else{
-    $quote="\"$threadurl2#q$no\"";
+    $quote="\"javascript:jq.quick_reply.spawn_window($(this).text());\"";
     }
 
 	if(MODREWRITE == '0'){
@@ -287,14 +287,14 @@ $lskd_fix_loop=0;
       if($w && $h){//when there is size...
         if(@is_file(THUMB_DIR.$tim.'s.png')){
           $imgsrc = "    <br /><span class=\"thumbnailmsg\">".S_THUMB."</span><br /><a onclick=\"return expandImage(this, ".$size[0].", ".$size[1].")\" href=\"".$src."\" target=_blank><img src=\"".THUMB_DIR.$tim.'s.png'.
-      "\" border=\"0\" align=\"left\" width=\"$w\" height=\"$h\" hspace=\"20\" alt=\"".$fsize." B\" /></a><br />";
+      "\" border=\"0\" align=\"left\" width=\"$w\" height=\"$h\" hspace=\"20\" vspace=\"5\" alt=\"".$fsize." B\" /></a><br />";
         }else{
           $imgsrc = "<a onclick=\"return expandImage(this, ".$size[0].", ".$size[1].")\" href=\"".$src."\"><img src=\"".$src.
-      "\" border=\"0\" align=\"left\" width=\"$w\" height=\"$h\" hspace=\"20\" alt=\"".$fsize." B\" /></a><br />";
+      "\" border=\"0\" align=\"left\" width=\"$w\" height=\"$h\" hspace=\"20\" vspace=\"5\" alt=\"".$fsize." B\" /></a><br />";
         }
       }else{
         $imgsrc = "<a onclick=\"return expandImage(this, ".$size[0].", ".$size[1].")\" href=\"".$src."\"><img src=\"".$src.
-      "\" border=\"0\" align=\"left\" hspace=\"20\" alt=\"".$fsize." B\" /></a><br />";
+      "\" border=\"0\" align=\"left\" hspace=\"20\" vspace=\"5\" alt=\"".$fsize." B\" /></a><br />";
       }
       $dat.="<br /><span class=\"filesize\">".S_PICNAME."<a onclick=\"return expandImage(this, ".$size[0].", ".$size[1].")\" href=\"$src\">$tim$ext</a>-($ksize KB)</span>$imgsrc";
     }
@@ -328,7 +328,7 @@ $lskd_fix_loop=0;
 	if(USE_ADS3){$dat.=''.ADS3.'<hr />';}
 	if($resno){
     echo "<!--";
-    $dat.= "[<a href=\"".PHP_SELF2."\">".S_RETURN."</a>]\n";
+    $dat.= "[<a href=\"".PHP_SELF2."\">".S_RETURN."</a>] [<a href=\"#top\"/>Вверх</a>] [<input type='checkbox' id='updater_checkbox' \"+((jq.thread_updater.config.auto_update) ? \"checked\" : \"\")+\"></input> <label for='updater_checkbox'>Автообновление</label> <span class='updater_timer'></span> <span class='updater_status'></span>] [<a class='update_button' href=''>Обновить</a>]\n<hr />";
     echo "-->";
 	}
     clearstatcache();//clear stat cache of a file
@@ -475,7 +475,31 @@ function insert(text)
 }
 </script>
 <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
-'.EXTRA_SHIT.'
+<script src="' . JS_PATH . "/jquery.min.js\" type='text/javascript'></script>";
+    
+    if ( USE_JS_SETTINGS )
+        $dat .= '<script src="' . JS_PATH . '/suite_settings.js" type="text/javascript"></script>';
+    if ( USE_UTIL_QUOTE )
+        $dat .= '<script src="' . JS_PATH . '/utility_quotes.js" type="text/javascript"></script>';
+    if ( USE_INF_SCROLL )
+        $dat .= '<script src="' . JS_PATH . '/infinite_scroll.js" type="text/javascript"></script>';
+    if ( USE_FORCE_WRAP )
+        $dat .= '<script src="' . JS_PATH . '/force_post_wrap.js" type="text/javascript"></script>';
+    if ( USE_UPDATER )
+        $dat .= '<script src="' . JS_PATH . '/thread_updater.js" type="text/javascript"></script>';
+    if ( USE_CSS )
+        $dat .= '<script src="' . JS_PATH . '/extra/custom_css.js" type="text/javascript"></script>';
+    if ( USE_FAST_REP )
+        $dat .= "<script src='" . JS_PATH . "/extra/jquery.form.js' type='text/javascript'></script> <script src='" . JS_PATH . "/extra/jquery.js' type='text/javascript'></script> <script src='" . JS_PATH . "/extra/quick_reply.js' type='text/javascript'></script>";
+
+
+
+
+
+
+    
+    $dat .= '
+' . EXTRA_SHIT .'
 </head>
 <body>
  '.$titlebar.'
