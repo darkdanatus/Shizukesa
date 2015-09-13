@@ -43,9 +43,9 @@ define(DISP_ID, 1);										//Display user IDs (1: yes  0: no)
 define(BR_CHECK, 0);									//Max lines per post (0 = no limit)
 define(TRIPKEY, '!');									//this character is displayed before tripcodes
 define(MANTHUMBS, '1');									//Display thumbnails in manager panel
-define(BOTCHECK, '1');									//Use CAPTCHAs
+define(BOTCHECK, '0');									//Use CAPTCHAs
 define(USE_BBCODE, '1');								//Use BBcode
-define(FORCED_ANON, '1');									//Forced anonymity
+define(FORCED_ANON, '0');									//Forced anonymity
 define(GLOBAL_MSG, '<center><font color=red></font></center>');									//4ch like global message..
 
 //CSS stuff.
