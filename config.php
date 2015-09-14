@@ -67,7 +67,7 @@ define(IMG_DIR, 'src/');								//Image directory (needs to be 777)
 define(THUMB_DIR,'thumb/');								//Thumbnail directory (needs to be 777)
 define(HOME,  '/');										//Site home directory (up one level by default
 define(LOG_MAX,  '1500');								//Maxium number of entries
-define(PHP_SELF, 'imgboard.php');						//Name of main script file
+define(PHP_SELF, 'post');						//Name of main script file
 define(PHP_SELF2, 'index.html');						//Name of main htm file
 define(PHP_EXT, '.html');								//Extension used for board pages after first
 
