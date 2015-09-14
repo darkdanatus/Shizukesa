@@ -513,7 +513,7 @@ function insert(text)
 <span class="adminbar">
 [<a href="javascript:set_stylesheet('."'".$css1_file."'".')">'.$css1_file.'</a>]  [<a href="javascript:set_stylesheet('."'".$css2_file."'".')">'.$css2_file.'</a>]  [<a href="javascript:set_stylesheet('."'".$css3_file."'".')">'.$css3_file.'</a>] - 
 [<a href="'.HOME.'" target="_top">'.S_HOME.'</a>]
-[<a href="'.PHP_SELF.'?mode=admin">'.S_ADMIN.'</a>]
+[<a href="'.$adminlink.'">'.S_ADMIN.'</a>]
 </span>
 <div class="logo"><span>'.$titlepart.'</span></div>
 <div class="headsub">'.S_HEADSUB.'</div><hr />';
