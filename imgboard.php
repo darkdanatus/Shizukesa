@@ -160,13 +160,6 @@ $lskd_fix_loop=0;
       $dat.="<span class=\"filesize\">".S_PICNAME."<a onclick=\"return expandImage(this, ".$size[0].", ".$size[1].")\" href=\"$src\">$tim$ext</a>-($ksize KB)</span>$imgsrc";
       
     }
-    
-    // Modrewrite optimizations
-    if(MODREWRITE == '1') {
-      $adminlink = "admin";
-    } else {
-      $adminlink = PHP_SELF."?mode=admin";
-    }
 
     
         // word filters
@@ -500,7 +493,12 @@ function insert(text)
 
 
 
-
+    // Modrewrite optimizations
+    if(MODREWRITE == '1') {
+      $adminlink = "admin";
+    } else {
+      $adminlink = PHP_SELF."?mode=admin";
+    }
 
 
     
