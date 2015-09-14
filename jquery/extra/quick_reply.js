@@ -51,7 +51,7 @@ jq.quick_reply = {
 			}
 		});
 		jq.quick_reply.details.qrbasetitle = "Ответ";
-		qreply_clone.find("textarea").attr("id","jq_jquery_quick_reply_textarea").removeAttr("cols").css({"width":"300px","min-width":"300px"}).parent().prev("td").remove();
+		qreply_clone.find("textarea").attr("id","jq_jquery_quick_reply_textarea").removeAttr("cols").css({"width":"300px","min-width":"300px", "max-width":"300px"}).parent().prev("td").remove();
 		$("div#jq_jquery_quick_reply_container").remove();
 		$("body").append("<div style='max-width:310px;position:fixed;left:59%;top:22%' id='jq_jquery_quick_reply_container' class='reply'><div id='jq_jquery_quick_reply_container_title' class='theader' style='text-align:center;width:100%;cursor:move'><small><strong>"+jq.quick_reply.details.qrbasetitle+"</strong></small><img id='r_qr_close' style='float:right;cursor:pointer;position:relative;right:5px;font-size:small' src='jquery/close.png' title='Закрыть' alt='[X]'></div></div>")
 		$("div#jq_jquery_quick_reply_container").append("<span style='max-width:300px' id='jq_jquery_quick_reply_window'></span>");
