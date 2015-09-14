@@ -14,5 +14,6 @@
     $com = preg_replace("/\[s\](.*)\[\/s\]/Usi", "<span style=\"text-decoration: line-through\">\\1</span>", $com);
     $com = preg_replace("/\[size=(.*)\](.*)\[\/size\]/Usi", "<span style=\"font-size:\\1ex\">\\2</span>", $com);
     $com = preg_replace("/\[quote](.*)\[\/quote\]/Usi", "<div>Quote:</div><div style=\"border:solid 1px;\">\\1</div>", $com);
-	
+    /* Auto Linker */
+    $com = ereg_replace("(https?|ftp|news|http)(://[[:alnum:]\+\$\;\?\.%,!#~*/:@&=_-]+)","<a href=\"\\1\\2\">\\1\\2</a>",$com);	
 ?>
