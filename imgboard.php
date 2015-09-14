@@ -161,8 +161,13 @@ $lskd_fix_loop=0;
       
     }
     
-   
-    
+    // Modrewrite optimizations
+    if(MODREWRITE == '1') {
+      $adminlink = "admin";
+    } else {
+      $adminlink = PHP_SELF."?mode=admin";
+    }
+
     
         // word filters
  $com_parts = explode(" ", $com); 
@@ -1366,7 +1371,7 @@ function admindel($pass){
 
   echo "</table><input type=submit value=\"".S_ITDELETES."$msg\">";
   echo "<input type=reset value=\"".S_RESET."\"></form>";
-  echo "<br /><hr /><br /><form method=\"post\" action=\"imgboard.php?mode=banish\" ><table><tr><th>IP</th><td><input type='text' name='ip_to_ban' /></td></tr><tr><th>Reason</th><td><input type='text' name='reason' /></td></tr></table><input type=\"submit\" value=\"".S_BANS."\"/></form>".S_BANS_EXTRA."";
+  echo "<br /><hr /><br /><form method=\"post\" action=\"".PHP_SELF."?mode=banish\" ><table><tr><th>IP</th><td><input type='text' name='ip_to_ban' /></td></tr><tr><th>Reason</th><td><input type='text' name='reason' /></td></tr></table><input type=\"submit\" value=\"".S_BANS."\"/></form>".S_BANS_EXTRA."";
   echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"img.css\" />";
 
   $all = (int)($all / 1024);
