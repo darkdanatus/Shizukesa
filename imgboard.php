@@ -656,62 +656,110 @@ function regist($name,$email,$sub,$com,$url,$pwd,$upfile,$upfile_name,$resto,$nu
 
   // upload processing
   if($upfile&&file_exists($upfile)){
-    $dest = $path.$tim.'.tmp';
-    move_uploaded_file($upfile, $dest);
-    //if an error in up, it changes to down (what?)
-    //copy($upfile, $dest);
-    $upfile_name = CleanStr($upfile_name);
-    if(!is_file($dest)) error(S_UPFAIL,$dest);
-    $size = getimagesize($dest);
-    if(!is_array($size)) error(S_NOREC,$dest);
-    $md5 = md5_of_file($dest);
-    foreach($badfile as $value){if(ereg("^$value",$md5)){
-      error(S_SAMEPIC,$dest); //Refuse this image
-    }}
-    chmod($dest,0666);
-    $W = $size[0];
-    $H = $size[1];
-    $fsize = filesize($dest);
-    if($fsize>MAX_KB * 1024) error(S_TOOBIG,$dest);
-    switch ($size[2]) {
-    //file types
-      case 1 : $ext=".gif";break;
-      case 2 : $ext=".jpg";break;
-      case 3 : $ext=".png";break;
-      case 4 : $ext=".swf";break;
-      case 5 : $ext=".webm";break;
-/*    case 6 : $ext=".psd";break;
-      case 7 : $ext=".bmp";break;
-      case 8 : $ext=".tiff";break;
-      case 9 : $ext=".tiff";break;
-      case 10 : $ext=".jpc";break;
-      case 11 : $ext=".jp2";break;
-      case 12 : $ext=".jpx";break;
-      case 13 : $ext=".jb2";break;
-      case 14 : $ext=".swc";break;
-      case 15 : $ext=".iff";break;
-      case 16 : $ext=".wbmp";break;
-      case 17 : $ext=".xbm";break;*/
-      default : $ext=".xxx";error(S_BADFILEISBAD,$dest);
-    }
+    $has_image = $upfile && file_exists( $upfile );
+    if ( $has_image ) {
+            //upload processing
+            $dest = tempnam( substr( $path, 0, -1 ), "img" );
+            //$dest = $path.$tim.'.tmp';
+            move_uploaded_file( $upfile, $dest );
+    
+            clearstatcache(); // otherwise $dest looks like 0 bytes!
+    
+            $upfile_name = CleanStr( $upfile_name );
+            $fsize             = filesize( $dest );
+    
+            if ( !is_file( $dest ) )
+                    error( S_UPFAIL, $dest );
+            if ( !$fsize /*|| /*$fsize > MAX_KB * 1024*/ )
+                    error( S_TOOBIG, $dest );
+    
+            preg_match('/(\.\w+)$/', $upfile_name, $ext);
+            $ext = $ext[0]; //Obtain extension.
+//            $md5 = md5_of_file($dest);
+            if ($ext == ".webm") {
+                    global $W, $H;
+                    class VideoProcessor {
+                            function process($input) {
+                                        $info = $this->check($input);
+                                                    global $W, $H;
+                                                    $W = $info['width'];
+                                                    $H = $info['height'];
+                            }
+                            
+                            private function check ($input) {
+                                        if ('which avprobe' || 'where avprobe') { return $this->process_avprobe($input); }
+                                        else if ('which ffprobe' || 'where ffprobe') { return $this->process_ffprobe($input); }
+                                        
+                                        return 0;
+                            }
+                            
+                            function process_avprobe($input) {
+                                        exec("avprobe -version", $version, $aye);
+                    
+                                        if (version_compare($version, '0.9', '>=')) {
+                                                    //At or above avprobe 0.9, which has extra options (specifically JSON).
+                                                    //Eventually.
+                                        } else {
+                                                    //Below avprobe 0.9.
+                                                    exec("avprobe -show_format -show_streams $input", $probe);
+                                                    $probe = implode("\n", $probe); //For regex multi-line.
+                    
+                                                    preg_match("/^width=(\d+)$/msi", $probe, $width);
+                                                    preg_match("/^height=(\d+)$/msi", $probe, $height);
+                                                    preg_match("/^duration=([\d\.]+)$/msi", $probe, $dur);
+                                                    preg_match("/^codec_type=([a-z]+)$/msi", $probe, $codec_type);
+                                                    
+                                                    return ['width' => $width[1], 'height' => $height[1], 'duration' => round($dur[1],1), 'type' => $codec_type[1]];
+                                        }
+                            }
+                            
+                            function process_ffprobe($input) {
+                                        //exec("ffprobe -print_format json -show_format -show_streams $input", $out, $aye);
+                                        
+                                        var_dump($out);
+                            }
+                    }
+                    $processor = new VideoProcessor;
+                    $processor->process($dest);
 
-	     if($W < MIN_W || $H < MIN_H){
-	  error(S_TOODAMNSMALL,$dest);
+            } else {
+                    $size = getimagesize($dest);
+                    if(!is_array($size)) error(S_NOREC,$dest);
+                    $md5 = md5_of_file($dest);
+                    foreach($badfile as $value){if(ereg("^$value",$md5)){
+                        error(S_SAMEPIC,$dest); //Refuse this image
+                    }}
+                    chmod($dest,0666);
+                    $W = $size[0];
+                    $H = $size[1];
+                    $fsize = filesize($dest);
+                    if($fsize>MAX_KB * 1024) error(S_TOOBIG,$dest);
+                    switch ($size[2]) {
+                    //file types
+                        case 1 : $ext=".gif";break;
+                        case 2 : $ext=".jpg";break;
+                        case 3 : $ext=".png";break;
+                        case 13 : $ext=".swf";break;
+                        default : $ext=".xxx";error(S_BADFILEISBAD,$dest);
+                    }
+    
+    	                 if($W < MIN_W || $H < MIN_H){
+    	                   error(S_TOODAMNSMALL,$dest);
+                    }
+     }
+                    // Picture reduction
+                    if($W > MAX_W || $H > MAX_H){
+                        $W2 = MAX_W / $W;
+                        $H2 = MAX_H / $H;
+                        ($W2 < $H2) ? $key = $W2 : $key = $H2;
+                        $W = ceil($W * $key);
+                        $H = ceil($H * $key);
+            }
+    
+            $md5 = md5_file($dest);
+            $mes = $upfile_name . ' ' . S_UPGOOD;
     }
-
-    // Picture reduction
-    if($W > MAX_W || $H > MAX_H){
-      $W2 = MAX_W / $W;
-      $H2 = MAX_H / $H;
-      ($W2 < $H2) ? $key = $W2 : $key = $H2;
-      $W = ceil($W * $key);
-      $H = ceil($H * $key);
     }
-    $mes = S_UPGOOD;
-  
-  
-  
-  }
 
   if($_FILES["upfile"]["error"]==2){
     error(S_TOOBIG,$dest);
@@ -983,7 +1031,7 @@ if(strlen($url) > 10) error(S_UNUSUAL,$dest);
   mysql_free_result($result);
   if($row&&$upfile_name)error(S_RENZOKU2,$dest);
 
-	if(DUPE_CHECK){
+/*	if(DUPE_CHECK){
 	//Duplicate image check
     $result = mysql_call("select tim,ext,md5 from ".SQLLOG." where md5='".$md5."'");
     if($result){
@@ -996,7 +1044,19 @@ if(strlen($url) > 10) error(S_UNUSUAL,$dest);
     }}
 	
   }
-
+*/
+    //Duplicate file check
+    if ( DUPE_CHECK ) {
+        $result = mysql_call( "select no,resto from " . SQLLOG . " where md5='$md5'" );
+        if ( mysql_num_rows( $result ) ) {
+            list( $dupeno, $duperesto ) = mysql_fetch_row( $result );
+            if ( !$duperesto )
+                $duperesto = $dupeno;
+            error( '<a href="' . $duperesto . '#' . $dupeno . '">' . S_DUPE . '</a>', $dest );
+        }
+        mysql_free_result( $result );
+    }
+}
   $restoqu=(int)$resto;
   if($resto){ //res,root processing
     $rootqu="0";
@@ -1063,38 +1123,93 @@ $rootqu.",".
 }
 
 //thumbnails
-function thumb($path,$tim,$ext){
-  if(!function_exists("ImageCreate")||!function_exists("ImageCreateFromJPEG"))return;
+function thumb( $path, $tim, $ext ) {
+    global $resto;
+    if ( !function_exists( "ImageCreate" ) || !function_exists( "ImageCreateFromPNG" ) )
+        return;
+    $fname = $path . $tim . $ext;
+    $thumb_dir = THUMB_DIR; //thumbnail directory
+    //$outpath = $thumb_dir . $tim . 's.png';
+    $outpath = realpath("./").'/'.THUMB_DIR. $tim . 's.png';
+
+    define(MAXR_W, MAX_W); //Image replies exceeding this width will be thumbnailed
+    define(MAXR_H, MAX_H); //Image replies exceeding this height will be thumbnailed
+
+    //Determine thumbnail resolution.
+    $width = (!$resto) ? MAX_W : MAXR_W;
+    $height = (!$resto) ? MAX_H : MAXR_H;
+    if ($ext == ".webm") {
+        class VideoThumbnail {
+    function run($input, $output = "auto", $width = MAX_W, $height = MAX_H) {
+        if ('which avconv' || 'where avconv') { $this->thumb_avconv($input,$output,$width,$height); }
+        else if ('which ffmpeg' || 'where ffmpeg') { $this->thumb_ffmpeg($input,$output,$width,$height); }
+    }
+    private function passthrough($temp) {
+    }
+    
+    function thumb_avconv($input, $output, $width, $height) {
+        $inputn = preg_replace('/\\.[^.\\s]{3,4}$/', '', $input); //Strip out extension.
+        $output = ($output == "auto") ? THUMB_DIR . "/" . $inputn . ".png" : $output;
+        //Command formatting.
+        $quiet = '-v 0'; //A lot of stuff still pops up on the log.
+        $cmd = "$quiet -y -i '$input' -vframes 1 -vf scale='$width:-1' $output";
+        exec("avconv $cmd", $status, $return);
+        if ($return > 0) {
+            error("avconf: ($return)<br> $cmd", $dest);
+        } else {
+            return $output;
+        }
+    }
+    function thumb_ffmpeg($input, $output, $width, $height) {
+        $inputn = preg_replace('/\\.[^.\\s]{3,4}$/', '', $input); //Strip out extension.
+        $output = ($output == "auto") ? THUMB_DIR . "/" . $inputn . ".png" : $output;
+        //Command formatting.
+        $quiet = '-v 0'; //A lot of stuff still pops up on the log.
+        $cmd = "$quiet -y -i '$input' -vframes 1 -vf scale='$width:-1' $output";
+        exec("ffmpeg $cmd", $status, $return);
+        if ($return > 0) {
+            error("FFmpeg: ($return)<br>$cmd", $dest);
+        } else {
+            return $output;
+        }
+    }
+}
+        $thumb = new VideoThumbnail;
+        $thumb->run($fname, $outpath, $width, $height);
+    } else {
   $fname=$path.$tim.$ext;
   $thumb_dir = THUMB_DIR;     //thumbnail directory
   $width     = MAX_W;            //output width
   $height    = MAX_H;            //output height
   // width, height, and type are aquired
-  $size = GetImageSize($fname);
-  switch ($size[2]) {
-    case 1 :
-      if(function_exists("ImageCreateFromGIF")){
-        $im_in = @ImageCreateFromGIF($fname);
-        if($im_in){break;}
-      }
-      if(!is_executable(realpath("./gif2png"))||!function_exists("ImageCreateFromPNG"))return;
-      @exec(realpath("./gif2png")." $fname",$a);
-      if(!file_exists($path.$tim.'.png'))return;
-      $im_in = @ImageCreateFromPNG($path.$tim.'.png');
-      unlink($path.$tim.'.png');
-      if(!$im_in)return;
-      break;
-    case 2 : $im_in = @ImageCreateFromJPEG($fname);
-      if(!$im_in){return;}
-       break;
-    case 3 :
-      if(!function_exists("ImageCreateFromPNG"))return;
-      $im_in = @ImageCreateFromPNG($fname);
-      if(!$im_in){return;}
-      break;
-    default : return;
-  }
-  // Resizing
+        $size = GetImageSize( $fname );
+        $memory_limit_increased = false;
+        if ( $size[0] * $size[1] > 3000000 ) {
+            $memory_limit_increased = true;
+            ini_set( 'memory_limit', memory_get_usage() + $size[0] * $size[1] * 10 ); // for huge images
+        }
+        switch ( $size[2] ) {
+            case 1:
+                if ( function_exists( "ImageCreateFromGIF" ) ) {
+                    $im_in = ImageCreateFromGIF( $fname );
+                    if ( $im_in ) {
+                        break;
+                    }
+                }
+            case 2:
+                $im_in = ImageCreateFromJPEG($fname);
+                if (!$im_in) return;
+                break;
+            case 3:
+                if ( !function_exists( "ImageCreateFromPNG" ) )
+                    return;
+                $im_in = ImageCreateFromPNG($fname);
+                if (!$im_in) return;
+                break;
+            default:
+                return;
+        }
+    // Resizing
   if ($size[0] > $width || $size[1] >$height) {
     $key_w = $width / $size[0] * 2;
     $key_h = $height / $size[1] * 2;
@@ -1114,16 +1229,12 @@ function thumb($path,$tim,$ext){
   // copy resized original
   ImageCopyResampled( $im_out, $im_in, 0, 0, 0, 0, $out_w, $out_h, $size[0], $size[1] );
   // thumbnail saved
-  if ( $ext == ".gif" || $ext == ".png" ) {
-    ImagePNG( $im_out, $thumb_dir.$tim.'s.png', 6);
-  } else {
-    ImageJPEG( $im_out, $thumb_dir.$tim.'s.png', 60 );
-  }
-
+  ImagePNG( $im_out, $thumb_dir.$tim.'s.png', 6);
   chmod($thumb_dir.$tim.'s.png',0666);
   // created image is destroyed
   ImageDestroy($im_in);
   ImageDestroy($im_out);
+}
 }
 
 
