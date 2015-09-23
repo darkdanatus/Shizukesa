@@ -1,6 +1,6 @@
 # Shizukesa
-Новое: Поддержка WebM
-Special thanks to the RePod.
+Новое: Поддержка WebM<br \>
+Special thanks to the RePod.<br \>
 Основанно на STIBS (Super Tiny Image Board Software)<br \>
 Чтобы работало сообщение о бане, перенесите banned.php в корень.<br \>
 # Что в настройках написаных на яваскипте с использованием сочного жквери?
