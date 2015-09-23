@@ -14,7 +14,7 @@ define(S_UPLOADFILE, 'Файл');										//Describes file field
 define(S_NOFILE, 'Без Файла');										//Describes file/no file checkbox
 define(S_DELPASS, 'Пароль');										//Describes password field
 define(S_DELEXPL, '(Для удаления файла)');							//Prints explanation for password box (to the right)
-define(S_RULES, '<ul><li>Поддерживаемые типы файлов: GIF, JPG, PNG</li>
+define(S_RULES, '<ul><li>Поддерживаемые типы файлов: GIF, JPG, PNG, WEBM</li>
 <li>Maximum file size allowed is '.MAX_KB.' KB.</li>
 <li>Images greater than '.MAX_W.'x'.MAX_H.' pixels will be thumbnailed.</li>
 <li>Images smaller than '.MIN_W.'x'.MIN_H.' pixels will be refused.</li>
