@@ -16,17 +16,6 @@ define(TITLEIMG, '');									//Title image (point to php file if rotating)
 define(MODREWRITE, '1');              // If your host supports mod_rewrite, enable it
 
 //From here down all these settings are optional.
-
-// JavaScript & JQuery stuff
-define(JS_PATH, 'jquery');	    //Path to this shit
-define(USE_JS_SETTINGS, 1); //Include the JS suite's settings - enables user side settings
-define(USE_UTIL_QUOTE, 1);  //Use utility quotes
-define(USE_INF_SCROLL, 1);  //Use infinite scroll
-define(USE_FORCE_WRAP, 1);  //Use forced post wrapping
-define(USE_UPDATER, 1);     //Use thread updater
-define(USE_FAST_REP, 1);      //Use fast reply
-define(USE_CSS, 1);      //Use custom css
-
 //Extra settings - No need to change these for a basic installation, but you may want these options
 define(MAX_KB, '2048');									//Maximum upload size in KB
 define(MAX_W,  '250');									//Images exceeding this width will be thumbnailed
