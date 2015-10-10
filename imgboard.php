@@ -327,7 +327,7 @@ $lskd_fix_loop=0;
 	if(USE_ADS3){$dat.=''.ADS3.'<hr />';}
 	if($resno){
     echo "<!--";
-    $dat.= "[<a href=\"".PHP_SELF2."\">".S_RETURN."</a>] [<a href=\"#top\"/>Вверх</a>] [<input type='checkbox' id='updater_checkbox' \"+((jq.thread_updater.config.auto_update) ? \"checked\" : \"\")+\"></input> <label for='updater_checkbox'>Автообновление</label> <span class='updater_timer'></span> <span class='updater_status'></span>] [<a class='update_button' href=''>Обновить</a>]\n<hr />";
+    $dat.= "[<a href=\"".PHP_SELF2."\">".S_RETURN."</a>] [<a href=\"#top\"/>Вверх</a>]\n<hr />";
     echo "-->";
 	}
     clearstatcache();//clear stat cache of a file
@@ -473,25 +473,7 @@ function insert(text)
 	}
 }
 </script>
-<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
-<script src="' . JS_PATH . "/jquery.min.js\" type='text/javascript'></script>";
-    
-    if ( USE_JS_SETTINGS )
-        $dat .= '<script src="' . JS_PATH . '/suite_settings.js" type="text/javascript"></script>';
-    if ( USE_UTIL_QUOTE )
-        $dat .= '<script src="' . JS_PATH . '/utility_quotes.js" type="text/javascript"></script>';
-    if ( USE_INF_SCROLL )
-        $dat .= '<script src="' . JS_PATH . '/infinite_scroll.js" type="text/javascript"></script>';
-    if ( USE_FORCE_WRAP )
-        $dat .= '<script src="' . JS_PATH . '/force_post_wrap.js" type="text/javascript"></script>';
-    if ( USE_UPDATER )
-        $dat .= '<script src="' . JS_PATH . '/thread_updater.js" type="text/javascript"></script>';
-    if ( USE_CSS )
-        $dat .= '<script src="' . JS_PATH . '/extra/custom_css.js" type="text/javascript"></script>';
-    if ( USE_FAST_REP )
-        $dat .= "<script src='" . JS_PATH . "/extra/jquery.form.js' type='text/javascript'></script> <script src='" . JS_PATH . "/extra/jquery.js' type='text/javascript'></script> <script src='" . JS_PATH . "/extra/quick_reply.js' type='text/javascript'></script>";
-
-
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">";
 
     // Modrewrite optimizations
     if(MODREWRITE == '1') {
