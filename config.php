@@ -1,6 +1,6 @@
 <?php
 //Essentials - You NEED to change these, or at least make sure they're good
-define(SQLLOG, 'b');							//Table (NOT DATABASE) used by image board
+define(SQLLOG, 'railgun');							//Table (NOT DATABASE) used by image board
 define(SQLHOST, 'localhost');							//MySQL server address, usually localhost
 define(SQLUSER, 'root');							//MySQL user (must be changed)
 define(SQLPASS, 'password');							//MySQL user's password (must be changed)
@@ -8,8 +8,8 @@ define(SQLDB, 'database');								//Database used by image board
 
 //Basic settings
 define(PANEL_PASS, 'CHANGEME');							//Janitor password  (CHANGE THIS YO)
-define(TITLE, '/b/ - Бред');				//Name of this image board
-define(S_HEADSUB, '<center><font size=1></font><center>');  			//subtitle underneath title
+define(TITLE, 'To Aru Kagaku no Railgun');				//Name of this image board
+define(S_HEADSUB, '<center><font size=1>To Aru Majutsu no Index</font><center>');  			//subtitle underneath title
 define(SHOWTITLETXT, '1');								//Show TITLE at top (1: yes  0: no) [you shouldn't disable this btw]
 define(SHOWTITLEIMG, '0');								//Show image at top (0: no, 1: single, 2: rotating)
 define(TITLEIMG, '');									//Title image (point to php file if rotating)
@@ -39,8 +39,8 @@ define(GLOBAL_MSG, '<center><font color=red></font></center>');									//4ch li
 
 //CSS stuff.
 //These are required, but you can change them.
-define(CSSFILE, 'yotsuba.css');							//location of the css file, also the default
-define(CSS2FILE, 'kusaba.css');							//Second one
+define(CSSFILE, 'railgun.css');							//location of the css file, also the default
+define(CSS2FILE, 'autumn.css');							//Second one
 define(CSS3FILE, 'futaba.css');
 
 //Capcodes - show 'em who's boss (put it as your trip. IE: "name#CHANGEME" would result as "name## Admin ##!09EKYZv3TU")
@@ -65,7 +65,7 @@ define(S_OMITT_NUM, '5');								//number of posts to display in each thread on 
 define(NOPICBOX, '0');									//whether or not to have the [No Picture] checkbox (1: yes  0: no)
 define(DUPE_CHECK, '1');								//whether or not to check for duplicate images
 define(S_BOARDLIST, '[a / b / c] [d / e / f] [g / h / i] [j / k / l]');    //meta description for this board (LOOK AT THE README)
-define(S_DESCR, 'An imageboard powered by Shizukesa');    //meta description for this board
+define(S_DESCR, 'To Aru Majutsu no Index');    //meta description for this board
 define(EXTRA_SHIT, '');         //Any extra javascripts you want to include inside the <head>
 
 //Advertisements
