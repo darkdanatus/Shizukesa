@@ -15,17 +15,17 @@ define(S_NOFILE, 'Без Файла');										//Describes file/no file checkbo
 define(S_DELPASS, 'Пароль');										//Describes password field
 define(S_DELEXPL, '(Для удаления файла)');							//Prints explanation for password box (to the right)
 define(S_RULES, '<ul><li>Поддерживаемые типы файлов: GIF, JPG, PNG, WEBM</li>
-<li>Maximum file size allowed is '.MAX_KB.' KB.</li>
-<li>Images greater than '.MAX_W.'x'.MAX_H.' pixels will be thumbnailed.</li>
-<li>Images smaller than '.MIN_W.'x'.MIN_H.' pixels will be refused.</li>
+<li>Максимальный размер файла '.MAX_KB.' KB.</li>
+<li>Баны выдаются на всю подсеть.<!--Images greater than '.MAX_W.'x'.MAX_H.' pixels will be thumbnailed.--></li>
+<li>Размер миниатюр '.MIN_W.'x'.MIN_H.' пикслей.</li>
 </ul>');				//Prints rules under posting section
-define(S_REPORTERR, 'Ошибка: Cannot find reply.');							//Returns Ошибка when a reply (res) cannot be found
+define(S_REPORTERR, 'Тред не существует.');							//Returns Ошибка when a reply (res) cannot be found
 define(S_THUMB, 'Показана миниатюра. Нажмите на миниатюру чтобы развернуть.');					//Prints instructions for viewing real source
 define(S_PICNAME, 'Файл: ');										//Prints text before upload name/link
 define(S_REPLY, 'Ответ');										//Prints text for reply link
 define(S_OLD, 'Marked for deletion (old).');								//Prints text to be displayed before post is marked for deletion, see: retention
 define(S_RESU, '');											//Prints post?
-define(S_ABBR, ' сообщений свернуто. Нажмите [Ответ] чтобы развернуть.');						//Prints text to be shown when replies are hidden
+define(S_ABBR, ' posts ommited. Нажмите [Ответ] чтобы развернуть.');						//Prints text to be shown when replies are hidden
 define(S_REPDEL, 'Удалить пост ');									//Prints text next to S_DELPICONLY (left)
 define(S_DELPICONLY, 'Только файл');									//Prints text next to checkbox for file deletion (right)
 define(S_DELKEY, 'Пароль ');										//Prints text next to password field for deletion (left)
@@ -34,38 +34,38 @@ define(S_PREV, 'Назад');										//Defines previous button
 define(S_FIRSTPG, 'Назад');										//Defines previous button
 define(S_NEXT, 'Вперед');											//Defines next button
 define(S_LASTPG, 'Вперед');										//Defines next button
-define(S_FOOT, '- Misaka Mikoto Engine -'); //Prints footer (leave these credits)
+define(S_FOOT, 'To Aru Kagaku no Enjin v1.0'); //Prints footer (leave these credits)
 define(S_RELOAD, 'Назад');										//Reloads the image board (refresh)
-define(S_UPFAIL, 'Ошибка: Upload failed.');								//Returns Ошибка for failed upload (reason: unknown?)
+define(S_UPFAIL, 'Загрузка не удалась.');								//Returns Ошибка for failed upload (reason: unknown?)
 define(S_NOREC, 'Ошибка: Cannot find record.');								//Returns Ошибка when record cannot be found
 define(S_SAMEPIC, 'Ошибка: Duplicate md5 checksum detected.');						//Returns Ошибка when a md5 checksum dupe is detected
 define(S_TOOBIG, 'This image is too large!  Upload something smaller!');
 define(S_TOOBIGORNONE, 'Image is too big or there is no image at all.');
 define(S_UPGOOD, ' '.$upfile_name.' uploaded!<br><br>');					//Defines message to be displayed when file is successfully uploaded
-define(S_STRREF, 'Ошибка: String refused.');								//Returns Ошибка when a string is refused
-define(S_UNJUST, 'Ошибка: Unjust POST.');								//Returns Ошибка on an unjust POST - prevents floodbots or ways not using POST method?
-define(S_NOPIC, 'Ошибка: No file selected.');								//Returns Ошибка for no file selected and override unchecked
-define(S_NOTEXT, 'Ошибка: No text entered.');								//Returns Ошибка for no text entered in to subject/comment
+define(S_STRREF, 'Строка отклонена.');								//Returns Ошибка when a string is refused
+define(S_UNJUST, 'Попытка вайпа.');								//Returns Ошибка on an unjust POST - prevents floodbots or ways not using POST method?
+define(S_NOPIC, 'Нет файла.');								//Returns Ошибка for no file selected and override unchecked
+define(S_NOTEXT, 'Текст отсутствует.');								//Returns Ошибка for no text entered in to subject/comment
 define(S_MANAGEMENT, 'Manager : ');									//Defines prefix for Manager Post name
 define(S_DELETION, 'Удаление');										//Prints deletion message with quotes?
-define(S_TOOLONG, 'Ошибка: Field too long.');								//Returns Ошибка for too many characters in a given field
-define(S_UNUSUAL, 'Ошибка: Abnormal reply.');								//Returns Ошибка for abnormal reply? (this is a mystery!)
-define(S_BADHOST, 'Ошибка: Host is banned.');								//Returns Ошибка for banned host ($badip string)
-define(S_PROXY80, 'Ошибка: Proxy detected on port 80.');							//Returns Ошибка for proxy detection on port 80
-define(S_PROXY8080, 'Ошибка: Proxy detected on port 8080.');							//Returns Ошибка for proxy detection on port 8080
+define(S_TOOLONG, 'Сообщение слишком длинное.');								//Returns Ошибка for too many characters in a given field
+define(S_UNUSUAL, 'Вайп.');								//Returns Ошибка for abnormal reply? (this is a mystery!)
+define(S_BADHOST, 'Достп с данного хоста запрещен.');								//Returns Ошибка for banned host ($badip string)
+define(S_PROXY80, 'Прокси');							//Returns Ошибка for proxy detection on port 80
+define(S_PROXY8080, 'Прокси');							//Returns Ошибка for proxy detection on port 8080
 define(S_SUN, 'Вск');											//Defines abbreviation used for "Sunday"
 define(S_MON, 'Пнд');											//Defines abbreviation used for "Monday"
 define(S_TUE, 'Втр');											//Defines abbreviation used for "Tuesday"
 define(S_WED, 'Срд');											//Defines abbreviation used for "Wednesday"
 define(S_THU, 'Чтв');											//Defines abbreviation used for "Thursday"
 define(S_FRI, 'Птн');											//Defines abbreviation used for "Friday"
-define(S_SAT, 'Субкота');											//Defines abbreviation used for "Saturday"
-define(S_ANONAME, 'Аноним');										//Defines what to print if there is no text entered in the name field
+define(S_SAT, 'Сбт');											//Defines abbreviation used for "Saturday"
+define(S_ANONAME, '');										//Defines what to print if there is no text entered in the name field
 define(S_ANOTEXT, '');										//Defines what to print if there is no text entered in the comment field
 define(S_ANOTITLE, '');									//Defines what to print if there is no text entered into subject field
-define(S_RENZOKU, 'Ошибка: Flood detected, post discarded.');						//Returns Ошибка for $sec/post spam filter
-define(S_RENZOKU2, 'Ошибка: Flood detected, file discarded.');						//Returns Ошибка for $sec/upload spam filter
-define(S_RENZOKU3, 'Ошибка: Flood detected.');								//Returns Ошибка for flood? (don't know the specifics)
+define(S_RENZOKU, 'Флуд');						//Returns Ошибка for $sec/post spam filter
+define(S_RENZOKU2, 'Флуд');						//Returns Ошибка for $sec/upload spam filter
+define(S_RENZOKU3, 'Флуд');								//Returns Ошибка for flood? (don't know the specifics)
 define(S_DUPE, 'Ошибка: Duplicate file entry detected.');						//Returns Ошибка for a duped file (same upload name or same tim/time)
 define(S_NOTHREADERR, 'Ошибка: Thread specified does not exist.');					//Returns Ошибка when a non-existant thread is accessed
 define(S_SCRCHANGE, 'Updating page.');									//Defines message to be displayed when post is successful	
@@ -92,7 +92,7 @@ define(S_NOTREAD, 'Ошибка: Cannot read from directory.<br>');						//Retur
 define(S_NOTDIR, 'Ошибка: Directory does not exist.<br>');						//Returns Ошибка when the script cannot find/read from the directory (does not exist/isn't directory), the chmod (777) is wrong
 define(S_SQLCONF, 'MySQL connection failure');		//MySQL connection failure
 define(S_SQLDBSF, 'Database Ошибка, check SQL settings<br>');	//database select failure
-define(S_TCREATE, 'Creating table!<br>\n');	//creating table
+define(S_TCREATE, 'Creating table!<br>');	//creating table
 define(S_TCREATEF, 'Unable to create table!<br>');		//table creation failed
 define(S_SQLFAIL, 'Critical SQL problem!<br>');		//SQL Failure
 define(S_QUOTE, 'Цитата');
