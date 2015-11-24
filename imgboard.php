@@ -868,15 +868,15 @@ if(strlen($url) > 10) error(S_UNUSUAL,$dest);
   $c_pass = $pwd;
   $pass = ($pwd) ? substr(md5($pwd),2,8) : "*";
  $youbi = array(S_SUN, S_MON, S_TUE, S_WED, S_THU, S_FRI, S_SAT);
-  $yd = $youbi[gmdate("w", $time+9*60*60)] ;
-  $now = gmdate("y/m/d",$time+9*60*60)."(".(string)$yd.")".gmdate("H:i",$time+9*60*60);
+  $yd = $youbi[gmdate("w", $time+3*60*60)] ;
+  $now = gmdate("y/m/d",$time+3*60*60)."(".(string)$yd.")".gmdate("H:i",$time+3*60*60);
   if(DISP_ID){
     if($email=="sage"&&DISP_ID==1){
       $now .= " ID: <font style=\"background-color: #121212; color: white; border-radius: 6px;
   padding: 0px 5px;\">SAGE</font>";
     }else{
-      $shi = substr(crypt(md5($_SERVER["REMOTE_ADDR"].'id'.gmdate("Ymd", $time+9*60*60)),'id'),-8);
-      $shi1 = substr(crypt(md5($_SERVER["REMOTE_ADDR"].'id'.gmdate("Ymd", $time+9*60*60)),'id'),-8);
+      $shi = substr(crypt(md5($_SERVER["REMOTE_ADDR"].'id'.gmdate("Ymd", $time+3*60*60)),'id'),-8);
+      $shi1 = substr(crypt(md5($_SERVER["REMOTE_ADDR"].'id'.gmdate("Ymd", $time+3*60*60)),'id'),-8);
       $shi1 = str_replace("A", "1", $shi1);
       $shi1 = str_replace("B", "2", $shi1);
       $shi1 = str_replace("C", "3", $shi1);
