@@ -14,7 +14,8 @@ extract($_POST);
 extract($_GET);
 extract($_COOKIE);
 
-if ($num==$capkeyx) { $auth = 1; }
+if (!empty($capkeyx) && $num==$capkeyx) { $auth = 1; }
+$_SESSION['capkey'] = '';
 
 //echo "<!--";
 $upfile_name=$_FILES["upfile"]["name"];
